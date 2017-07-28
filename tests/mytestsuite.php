@@ -1,10 +1,10 @@
 <?php
-require_once("mathtest.php");
+require_once("apptest.php");
 
 class MyTestSuite extends \PHPUnit\Framework\TestSuite{
     public static function suite(){
         $suite = new MyTestSuite("TetsSet");
-        $suite->addTestSuite('MathTest');
+        $suite->addTestSuite('AppTest');
         return $suite;
     }
 }
