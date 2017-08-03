@@ -1,6 +1,267 @@
-<h1>New site</h1>
-<p>{{ hello }}</p>
+{% extends "base.tmpl" %} {% block body %}
 
-<h2>{{ info }}</h2>
+<body>
+    <header>
+        <div class="fixed-nav">
+            <nav class="border-nav row nav-first">
+                <div class="brand-block col-md-3">
+                    <div class="brands row">
+                        <div class="logo logo-left">
+                        </div>
+                        <div class="brand-name">
+                        </div>
+                    </div>
+                </div>
+                <div class="search-block col-md-5">
+                    <div class="searc-form">
+                        <div class="search-menu">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse&nbsp;&nbsp;<span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-fix">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                        <div class="search-text-input">
+                            <input type="text" placeholder="   Search for Item...">
+                        </div>
+                        <div class="search-button">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-account-block col-md-4">
+                    <div class="my-account-wrap">
+                        <div class="basket">
+                        </div>
+                        <div class="btn-my-acc-wrap">
+                            <button type="button" class="btn btn-my-acc dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account&nbsp;&nbsp;<span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-fix">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <nav class="nav-second row">
+                <div class="col-md-7 col-md-offset-3">
+                    <ul class="nav-btn">
+                        <li class="btn"><a href="#"><span>HOME</span></a></li>
+                        <li class="btn"><a href="#"><span>MAN</span></a></li>
+                        <li class="btn"><a href="/good/"><span>WOMEN</span></a></li>
+                        <li class="btn"><a href="#"><span>KIDS</span></a></li>
+                        <li class="btn"><a href="#"><span>ACCOSERIESE</span></a></li>
+                        <li class="btn"><a href="/user/"><span>FEATURED</span></a></li>
+                        <li class="btn"><a href="/order/"><span>HOT DEALS</span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>
+    <div class="content">
+        <div class="top-image">
+            <div class="top-image-text">
+                <img src="img/pink-figure-top.jpg" alt="pink-figure-top">
+                <img src="img/top-img-text.png" alt="top-image-text">
+            </div>
+        </div>
+        <main>
+            <div class="category row">
+                <div class="col-md-6 photo-block">
+                    <div class="white-block">
+                        <img src="img/offer-men.png" alt="offer-for-men">
+                    </div>
+                    <div class="for-men">
+                        <img src="img/for-men.jpg" alt="for-men">
+                    </div>
+                    <div class="white-block white-block-lg">
+                        <img src="img/offer-acces.png" alt="offer-accoseriese">
+                    </div>
+                    <div class="accoseriese">
+                        <img src="img/acces.jpg" alt="accoseriese">
+                    </div>
+                </div>
+                <div class="col-md-6 photo-block">
+                    <div class="white-block">
+                        <img src="img/offer-women.png" alt="offer-for-women">
+                    </div>
+                    <div class="for-women">
+                        <img src="img/for-woman.jpg" alt="for-women">
+                    </div>
+                    <div class="white-block">
+                        <img src="img/offer-kids.png" alt="offer-for-kids">
+                    </div>
+                    <div class="for-kids">
+                        <img src="img/child.jpg" alt="for-kids">
+                    </div>
+                </div>
+            </div>
+            <div class="h-gallery-wrapper">
+                <div class="h-gallery">
+                    <div class="col-md-2 col-md-offset-5">
+                        <img src="img/fetured-items.png" alt="fetured-items">
+                    </div>
+                    <div class="col-md-5 col-md-offset-4">
+                        <img src="img/fetured-small.png" alt="small-text">
+                    </div>
+                </div>
+            </div>
+            <div class="p-3"></div>
+            <div class="gallery">
+                <div class="row gallery-row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="thumbnail card">
+                            <div class="box-shadow"></div>
+                            <div class="img-shadow">
+                                <img src="img/1-t-shirt.jpg" alt="t-shirt">
+                            </div>
+                            <div class="caption">
+                                <p>MANGO PEOPLE T-SHIRT</p>
+                                <p>$52.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="thumbnail card">
+                            <div class="box-shadow"></div>
+                            <div class="img-shadow">
+                                <img src="img/2-t-shirt.jpg" alt="t-shirt">
+                            </div>
+                            <div class="caption">
+                                <p>MANGO PEOPLE T-SHIRT</p>
+                                <p>$52.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="thumbnail card">
+                            <div class="box-shadow"></div>
+                            <div class="img-shadow">
+                                <img src="img/3-t-shirt.jpg" alt="t-shirt">
+                            </div>
+                            <div class="caption">
+                                <p>MANGO PEOPLE T-SHIRT</p>
+                                <p>$52.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="thumbnail card">
+                            <div class="box-shadow"></div>
+                            <div class="img-shadow">
+                                <img src="img/4-t-shirt.jpg" alt="t-shirt">
+                            </div>
+                            <div class="caption">
+                                <p>MANGO PEOPLE T-SHIRT</p>
+                                <p>$52.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row gallery-row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="thumbnail card">
+                            <div class="box-shadow"></div>
+                            <div class="img-shadow">
+                                <img src="img/5-t-shirt.jpg" alt="t-shirt">
+                            </div>
+                            <div class="caption">
+                                <p>MANGO PEOPLE T-SHIRT</p>
+                                <p>$52.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="thumbnail card">
+                            <div class="box-shadow"></div>
+                            <div class="img-shadow">
+                                <img src="img/6-t-shirt.jpg" alt="t-shirt">
+                            </div>
+                            <div class="caption">
+                                <p>MANGO PEOPLE T-SHIRT</p>
+                                <p>$52.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="thumbnail card">
+                            <div class="box-shadow"></div>
+                            <div class="img-shadow">
+                                <img src="img/7-t-shirt.jpg" alt="t-shirt">
+                            </div>
+                            <div class="caption">
+                                <p>MANGO PEOPLE T-SHIRT</p>
+                                <p>$52.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="thumbnail card">
+                            <div class="box-shadow"></div>
+                            <div class="img-shadow">
+                                <img src="img/8-t-shirt.jpg" alt="t-shirt">
+                            </div>
+                            <div class="caption">
+                                <p>MANGO PEOPLE T-SHIRT</p>
+                                <p>$52.00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-4"></div>
+            <div class="browse-div-btn">
+                <button class="btn btn-browse" href='#'>
+                  Browse All Product&nbsp;&nbsp;
+                  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="p-5"></div>
+            <div class="offer-block row">
+                <div class="wallpapper-banner col-md-8">
+                    <div class="offer-banner">
+                        <img src="img/offerForWomen.png" alt="banner-offer">
+                    </div>
+                    <img src="img/offer-img.jpg" alt="offer">
+                </div>
+                <div class="column col-md-4">
+                    <div class="">
+                        <div class="col-md-3">
+                            <img src="img/freeDeliver.png" alt="deliver">
+                        </div>
+                        <div class="col-md-9 mini-discr">
+                            <p>Free Delivery</p>
+                            <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="col-md-3">
+                            <img src="img/discount.png" alt="discount">
+                        </div>
+                        <div class="col-md-9 mini-discr">
+                            <p>Sales & discounts</p>
+                            <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="col-md-3">
+                            <img src="img/crown.png" alt="crown">
+                        </div>
+                        <div class="col-md-9 mini-discr">
+                            <p>Quality assurance</p>
+                            <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <div class="p-5"></div>
+        <div class="bottom-image row">
 
-<button href="/order/" class="btn btn-info btn-lg"></button>
+            {% endblock %}
