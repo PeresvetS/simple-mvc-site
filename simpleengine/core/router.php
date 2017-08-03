@@ -75,8 +75,8 @@ class Router
             else{
                 $this->setUpRouting(
                     [
-                        "pattern" => "controllers/DefaultController/index",
-                        "controller" => "controllers/DefaultController/index",
+                        "pattern" => "controllers/DefaultController/default/index",
+                        "controller" => "controllers/DefaultController/default/index",
                         "url" => $this->urlData["main"]
                     ]
                 );
@@ -130,9 +130,9 @@ class Router
         $command = $activeRule['controller'];
         $commandParts = explode("/", $command);
 
-        if(isset($commandParts[0]) && $commandParts[0] != "")
+        if(isset($commandParts[0]) && $commandParts[0] != "") {
             $this->package = $commandParts[0];
-
+        }
        
         if($this->controller == ""){
             if(isset($commandParts[1])){

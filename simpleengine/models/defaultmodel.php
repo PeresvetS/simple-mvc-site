@@ -10,7 +10,5 @@ class DefaultModel
     public function testMethod(){
         // $app = Application::instance();
         // $app->db()->getArrayBySqlQuery("SELECT * FROM my_table");
-
-        return "GeekUnivercity is awesome";
     }
 }

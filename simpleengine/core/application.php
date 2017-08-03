@@ -33,19 +33,23 @@ class Application {
     }
 
     public function setConfiguration(array $configuration){
-        if(empty($this->configuration))
+        if(empty($this->configuration)) {
             $this->configuration = $configuration;
-        else
+        }
+        else {
             throw new ApplicationException("Configuration has been already set up", 0501);
+        }
     }
 
     public function get(string $parameterName){
         $value = NULL;
 
-        if(key_exists($parameterName, $this->configuration))
+        if(key_exists($parameterName, $this->configuration)) {
             $value = $this->configuration[$parameterName];
-        else
+        }
+        else {
             throw new ApplicationException("No config parameter found for key ".$parameterName);
+        }
 
         return $value;
     }

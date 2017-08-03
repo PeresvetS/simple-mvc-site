@@ -1,13 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Alex Pryakhin
- * Date: 18.04.2017
- * Time: 16:30
- */
 
 namespace simpleengine\controllers;
-
 
 use simpleengine\models\DefaultModel;
 
@@ -17,13 +10,11 @@ class DefaultController extends AbstractController
     {
         $model = new DefaultModel();
 
-        echo $this->render("index", [
-            "hello" => "geekbrains",
+        echo $this->render("default/index", [
             "info" => $model->testMethod()
         ]);
     }
 
     public function actionDefault(){
-        echo 345;
     }
 }

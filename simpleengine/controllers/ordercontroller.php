@@ -13,7 +13,7 @@ class OrderController extends AbstractController
     {
     $model = new Order();
 
-    echo $this->render("index",[
+    echo $this->render("order/index",[
         "hello" => "geekbrains",
     ]);
 

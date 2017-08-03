@@ -3,6 +3,7 @@
 
 namespace simpleengine\models;
 
+use \simpleengine\core\Application;
 
 interface DbModelInterface
 {

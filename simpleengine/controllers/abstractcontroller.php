@@ -14,21 +14,24 @@ abstract class AbstractController
     abstract public function actionIndex();
 
     protected function render(string $template = "", array $variables = []) : string{
-        if($template == "")
+        if($template == "") {
             $template = $this->requestedAction;
+        }
 
         $dir = Application::instance()->get("DIR")["VIEWS"];
         $templateDir = mb_strtolower(substr(Application::instance()->router()->getController(), 0, -10), "UTF-8");
 
         try {
             $loader = new \Twig_Loader_Filesystem($dir);
-            $twig = new \Twig_Environment($loader, []);
+            $twig = new \Twig_Environment($loader, [
+                'autoescape' => true,
+            ]);
         }
         catch(\Exception $e){
-            throw new ApplicationException("Template " . $dir . $template . " not found", 0504);
+            throw new ApplicationException("Template " . $templateDir . $template . " not found", 0504);
         }
 
-        return $twig->render($templateDir. "/". $template.".tmpl", $variables);
+        return $twig->render($template . ".tmpl", $variables);
     }
 
     public function setRequestedAction(string $actionName){

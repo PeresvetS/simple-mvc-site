@@ -12,7 +12,7 @@ class UserController extends AbstractController
     {
         $model = new User();
 
-        echo $this->render("index", [
+        echo $this->render("user/index", [
             "hello" => "world",
         ]);
     }

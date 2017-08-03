@@ -5,8 +5,7 @@ namespace simpleengine\models;
 
 use \simpleengine\core\Application;
 
-
-class Order implements DbModelInterface
+class Good implements DbModelInterface
 {
 
     public function find($id)
