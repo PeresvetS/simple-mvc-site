@@ -1,16 +1,68 @@
-<head>
-    <title></title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ public_url }}css/style.min.css">
-    <!-- Latest compiled and minified JavaScript -->
-    <script src='https://use.fontawesome.com/5cb9b1fb91.js'></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <script src="{{ public_url }}js/main.js"></script>
-</head>
+<body>
+    <header>
+        <div class="fixed-nav">
+            <nav class="border-nav row nav-first">
+                <div class="brand-block col-md-3">
+                    <div class="brands row">
+                        <div class="logo logo-left">
+                        </div>
+                        <div class="brand-name">
+                        </div>
+                    </div>
+                </div>
+                <div class="search-block col-md-5">
+                    <div class="searc-form">
+                        <div class="search-menu">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse&nbsp;&nbsp;<span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-fix">
+                                <li><a href="#">summer man clothes</a></li>
+                                <li><a href="#">winter women collection</a></li>
+                                <li><a href="#">autoumn children dress</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Discounts</a></li>
+                            </ul>
+                        </div>
+                        <div class="search-text-input">
+                            <input type="text" placeholder="   Search for Item...">
+                        </div>
+                        <div class="search-button">
+                <a type="submit" role="button"><span class="glyphicon glyphicon-search"></span></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="my-account-block col-md-4">
+                    <div class="my-account-wrap">
+                        <div class="basket">
+                        </div>
+                        <div class="btn-my-acc-wrap">
+                            <button type="button" class="btn btn-my-acc dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account&nbsp;&nbsp;<span class="caret"></span></button>
+                            <ul class="dropdown-menu dropdown-fix">
+                                {% if isLogin %}
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Orders</a></li>
+                                <li><a href="#">Checkout</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="#">Log Out</a></li>
+                                {% else %}
+                                <li><a href="auth/login">Log In</a></li>
+                                <li><a href="#">Register</a></li>  {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <nav class="nav-second row">
+                <div class="col-md-7 col-md-offset-3">
+                    <ul class="nav-btn">
+                        <li class="btn"><a href="#"><span>HOME</span></a></li>
+                        <li class="btn"><a href="#"><span>MAN</span></a></li>
+                        <li class="btn"><a href="/good/"><span>WOMEN</span></a></li>
+                        <li class="btn"><a href="#"><span>KIDS</span></a></li>
+                        <li class="btn"><a href="#"><span>ACCOSERIESE</span></a></li>
+                        <li class="btn"><a href="/user/"><span>FEATURED</span></a></li>
+                        <li class="btn"><a href="/order/"><span>HOT DEALS</span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </header>

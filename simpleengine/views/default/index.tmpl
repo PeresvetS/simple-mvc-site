@@ -1,69 +1,6 @@
 {% extends "base.tmpl" %} {% block body %}
+{% include "layouts/header.tmpl" %}
 
-<body>
-    <header>
-        <div class="fixed-nav">
-            <nav class="border-nav row nav-first">
-                <div class="brand-block col-md-3">
-                    <div class="brands row">
-                        <div class="logo logo-left">
-                        </div>
-                        <div class="brand-name">
-                        </div>
-                    </div>
-                </div>
-                <div class="search-block col-md-5">
-                    <div class="searc-form">
-                        <div class="search-menu">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse&nbsp;&nbsp;<span class="caret"></span></button>
-                            <ul class="dropdown-menu dropdown-fix">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div>
-                        <div class="search-text-input">
-                            <input type="text" placeholder="   Search for Item...">
-                        </div>
-                        <div class="search-button">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="my-account-block col-md-4">
-                    <div class="my-account-wrap">
-                        <div class="basket">
-                        </div>
-                        <div class="btn-my-acc-wrap">
-                            <button type="button" class="btn btn-my-acc dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account&nbsp;&nbsp;<span class="caret"></span></button>
-                            <ul class="dropdown-menu dropdown-fix">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <nav class="nav-second row">
-                <div class="col-md-7 col-md-offset-3">
-                    <ul class="nav-btn">
-                        <li class="btn"><a href="#"><span>HOME</span></a></li>
-                        <li class="btn"><a href="#"><span>MAN</span></a></li>
-                        <li class="btn"><a href="/good/"><span>WOMEN</span></a></li>
-                        <li class="btn"><a href="#"><span>KIDS</span></a></li>
-                        <li class="btn"><a href="#"><span>ACCOSERIESE</span></a></li>
-                        <li class="btn"><a href="/user/"><span>FEATURED</span></a></li>
-                        <li class="btn"><a href="/order/"><span>HOT DEALS</span></a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
     <div class="content">
         <div class="top-image">
             <div class="top-image-text">
@@ -263,5 +200,5 @@
         </main>
         <div class="p-5"></div>
         <div class="bottom-image row">
-
-            {% endblock %}
+        {% include "layouts/footer.tmpl" %}
+        {% endblock %}
