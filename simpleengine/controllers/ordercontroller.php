@@ -14,7 +14,7 @@ class OrderController extends AbstractController
     $model = new Order();
 
     echo $this->render("order/index",[
-        "hello" => "geekbrains",
+        "public_url" => "../"
     ]);
 
     }

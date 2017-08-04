@@ -13,7 +13,9 @@ class GoodController extends AbstractController
     {
     $model = new Good();
 
-    echo $this->render("good/index", []);
+    echo $this->render("good/index", [
+        "public_url" => "../"
+    ]);
     }
 
     public function actionAddProduct(){
