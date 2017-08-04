@@ -43,10 +43,10 @@ gulp.task('js', function() {
 
 
 
-// gulp.task('watch', function() {
-//     gulp.watch(config.raw + "/sass/**/*.scss", ["sass"]);
-//     gulp.watch(config.raw + "/js/**/*.js", ["js"]);
-// });
+gulp.task('watch', function() {
+    gulp.watch(config.raw + "/sass/**/*.scss", ["sass"]);
+    gulp.watch(config.raw + "/js/**/*.js", ["js"]);
+ });
 
 
 
@@ -60,4 +60,4 @@ gulp.task('js', function() {
 
 // run 
 
-gulp.task("default", ["sass", "js"]);
+gulp.task("default", ["sass", "js", "watch"]);

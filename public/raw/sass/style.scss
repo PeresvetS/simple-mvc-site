@@ -36,11 +36,24 @@ main {
     width: 32px;
 }
 
+.background-wrapper {
+    background-image: "../../assets/img/backgroud/boots";
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    border-bottom-color: $white-border;
+    position: fixed;
+    bottom: $null;
+    left: $null;    
+    right: $null;
+    top: $null;
+    overflow: auto;
+}
+
 .bottom-image {
     background: $bottom-img;
     height: 438px;
     margin: auto;
-    width: 1600px;
+    width: 1600px;  
 }
 
 .browse-div-btn {
