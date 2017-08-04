@@ -75,6 +75,7 @@ main {
     @extend .btn-pink;
     height: 38px;
     width: 130px;
+    display: none !important;
 }
 
 .btn-my-acc-wrap {

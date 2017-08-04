@@ -1,0 +1,21 @@
+{
+    "name": "simple-mvc-site",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "gulp": "gulp"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "browser-sync": "^2.18.13",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "^4.0.0",
+        "gulp-connect-php": "^1.0.1",
+        "gulp-csso": "^3.0.0",
+        "gulp-notify": "^3.0.0",
+        "gulp-scss": "*",
+        "gulp-uglifyjs": "^0.6.2"
+    }
+}
