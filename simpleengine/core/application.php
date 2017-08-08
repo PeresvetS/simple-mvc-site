@@ -10,7 +10,8 @@ class Application {
     private $configuration = [];
     private $db = NULL;
 
-    public function run(){
+    public function run()
+    {
         $this->router = new Router();
 
         $class = "\\simpleengine\\" . $this->router->getPackage() . "\\" . $this->router->getController();
@@ -32,7 +33,8 @@ class Application {
         }
     }
 
-    public function setConfiguration(array $configuration){
+    public function setConfiguration(array $configuration)
+    {
         if(empty($this->configuration)) {
             $this->configuration = $configuration;
         }
@@ -41,7 +43,8 @@ class Application {
         }
     }
 
-    public function get(string $parameterName){
+    public function get(string $parameterName)
+    {
         $value = NULL;
 
         if(key_exists($parameterName, $this->configuration)) {
@@ -54,15 +57,16 @@ class Application {
         return $value;
     }
 
-    public function router() : Router{
+    public function router() : Router
+    {
         return $this->router;
     }
 
-    public function db(){
+    public function db()
+    {
         if($this->db == NULL){
             $this->db = new Db();
         }
-
         return $this->db;
     }
 }

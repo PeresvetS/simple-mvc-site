@@ -11,7 +11,8 @@ class DefaultController extends AbstractController
         $model = new DefaultModel();
 
         echo $this->render("default/index", [
-            "info" => $model->testMethod(),
+            "isLogin" => $this->isLogin(),
+            "isMaster" => $this->isMaster(),
             "public_url" => ""
         ]);
     }

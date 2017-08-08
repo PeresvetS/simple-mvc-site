@@ -1,69 +1,6 @@
 {% extends "base.tmpl" %} {% block body %}
+{% include "layouts/header.tmpl" %}
 
-<body>
-    <header>
-        <div class="fixed-nav">
-            <nav class="border-nav row nav-first">
-                <div class="brand-block col-md-3">
-                    <div class="brands row">
-                        <div class="logo logo-left">
-                        </div>
-                        <div class="brand-name">
-                        </div>
-                    </div>
-                </div>
-                <div class="search-block col-md-5">
-                    <div class="searc-form">
-                        <div class="search-menu">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse&nbsp;&nbsp;<span class="caret"></span></button>
-                            <ul class="dropdown-menu dropdown-fix">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div>
-                        <div class="search-text-input">
-                            <input type="text" placeholder="   Search for Item...">
-                        </div>
-                        <div class="search-button">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="my-account-block col-md-4">
-                    <div class="my-account-wrap">
-                        <div class="basket">
-                        </div>
-                        <div class="btn-my-acc-wrap">
-                            <button type="button" class="btn btn-my-acc dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account&nbsp;&nbsp;<span class="caret"></span></button>
-                            <ul class="dropdown-menu dropdown-fix">
-                                <li><a href="#">Action</a></li>
-                                <li><a href="#">Another action</a></li>
-                                <li><a href="#">Something else here</a></li>
-                                <li role="separator" class="divider"></li>
-                                <li><a href="#">Separated link</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </nav>
-            <nav class="nav-second row">
-                <div class="col-md-7 col-md-offset-3">
-                    <ul class="nav-btn">
-                        <li class="btn"><a href="#"><span>HOME</span></a></li>
-                        <li class="btn"><a href="#"><span>MAN</span></a></li>
-                        <li class="btn"><a href="#"><span>WOMEN</span></a></li>
-                        <li class="btn"><a href="#"><span>KIDS</span></a></li>
-                        <li class="btn"><a href="#"><span>ACCOSERIESE</span></a></li>
-                        <li class="btn"><a href="#"><span>FEATURED</span></a></li>
-                        <li class="btn"><a href="#"><span>HOT DEALS</span></a></li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
-    </header>
     <div class="content">
         <div class="top-strip-pink row">
             <div class="col-md-5 top-strip-pink-header column">
@@ -88,14 +25,14 @@
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
                     <div class="carusel-bg">
-                        <img src="img/ladyNewArrivals.png" alt="lady">
+<img src="{{ public_url }}img/ladyNewArrivals.png" alt="lady">
                     </div>
                     <div class="carousel-caption">
                     </div>
                 </div>
                 <div class="item">
                     <div class="carusel-bg">
-                        <img src="img/ladyNewArrivals.png" alt="lady">
+<img src="{{ public_url }}img/ladyNewArrivals.png" alt="lady">
                     </div>
                     <div class="carousel-caption">
                     </div>
@@ -173,7 +110,7 @@
                     <div class="thumbnail card">
                         <div class="box-shadow"></div>
                         <div class="sub-page-card-background img-shadow">
-                            <img src="img/lady1.png" alt="lady">
+<img src="{{ public_url }}img/lady1.png" alt="lady">
                         </div>
                         <div class="caption">
                             <p class="sub-page-card-font">BLAZE LEGGINGS</p>
@@ -185,7 +122,7 @@
                     <div class="thumbnail card">
                         <div class="box-shadow"></div>
                         <div class="sub-page-card-background img-shadow">
-                            <img src="img/lady2.png" alt="lady" class="fix-card-img">
+<img src="{{ public_url }}img/lady2.png" alt="lady" class="fix-card-img">
                         </div>
                         <div class="caption">
                             <p class="sub-page-card-font">ALEXA SWEATER</p>
@@ -197,7 +134,7 @@
                     <div class="thumbnail card">
                         <div class="box-shadow"></div>
                         <div class="sub-page-card-background img-shadow">
-                            <img src="img/lady3.png" alt="lady">
+<img src="{{ public_url }}img/lady3.png" alt="lady">
                         </div>
                         <div class="caption">
                             <p class="sub-page-card-font">AGNES TOP</p>
@@ -209,7 +146,7 @@
                     <div class="thumbnail card">
                         <div class="box-shadow"></div>
                         <div class="sub-page-card-background img-shadow">
-                            <img src="img/lady4.png" alt="lady">
+<img src="{{ public_url }}img/lady4.png" alt="lady">
                         </div>
                         <div class="caption">
                             <p class="sub-page-card-font">SYLVA SWEATER</p>
@@ -221,5 +158,5 @@
         </div>
         <div class="p-2"></div>
         <div class="bottom-image row">
-
+ {% include "layouts/footer.tmpl" %}
             {% endblock %}

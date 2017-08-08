@@ -44,8 +44,8 @@
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">Log Out</a></li>
                                 {% else %}
-                                <li><a href="auth/login">Log In</a></li>
-                                <li><a href="#">Register</a></li>  {% endif %}
+<li><a href="{{ public_url }}auth/login">Log In</a></li>
+<li><a href="{{ public_url }}auth/register">Register</a></li> {% endif %}
                             </ul>
                         </div>
                     </div>

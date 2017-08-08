@@ -18,7 +18,7 @@ class AppTest extends \PHPUnit\Framework\TestCase{
     protected function tearDown(){
         // destroy test DB rows
     }
-
+    
     public function testMain(){
         $this->assertEquals("PROD", $this->app->get("ENVIRONMENT"));
     }

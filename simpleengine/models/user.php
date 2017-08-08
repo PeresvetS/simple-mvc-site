@@ -13,7 +13,7 @@ class User implements DbModelInterface
     private $middlename;
     private $email;
 
-    public function __construct($id = null){
+    public function __construct(number $id = null){
         if((int)$id > 0){
             $this->find($id);
         }
@@ -23,7 +23,7 @@ class User implements DbModelInterface
 
     }
 
-    public function find($id)
+    public function find(number $id)
     {
         $app = Application::instance();
         $sql = "SELECT * FROM users WHERE id = ".(int)$id;

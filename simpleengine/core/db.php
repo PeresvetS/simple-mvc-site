@@ -9,7 +9,8 @@ class Db
 {
     private $pdo;
 
-    public function __construct(string $connection_name = "DB"){
+    public function __construct(string $connection_name = "DB")
+    {
         $app = Application::instance();
 
         try{
@@ -21,15 +22,25 @@ class Db
             $dsn = 'mysql:dbname='.$name.';host='.$host.";charset=".$charset;
 
             $this->pdo = new \PDO($dsn, $user, $pass);
+            $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch(\PDOException $e){
             echo "Can't connect to database";
         }
     }
 
-    public function getArrayBySqlQuery(string $sql){
-        $statement = $this->pdo->query($sql);
-        $result = $statement->fetchAll();
+
+    /**
+     * getArrayBySqlQuery
+     * @param string $sql
+     * @param array $param 
+     * @return array 
+     */
+    public function getArrayBySqlQuery(string $sql, $params)
+    {
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute($params);
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
         return $result;
     }

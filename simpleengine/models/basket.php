@@ -9,14 +9,14 @@ class Basket implements DbModelInterface
     private $id_user;
     private $productsArray = [];
 
-    public function __construct($id_user){
+    public function __construct(number $id_user){
         if((int)$id_user > 0){
             $this->id_user = $id_user;
             $this->find($id_user);
         }
     }
 
-    public function find($id_user)
+    public function find(number $id_user)
     {
         $app = Application::instance();
         $sql = "SELECT b.*, p.product_name
