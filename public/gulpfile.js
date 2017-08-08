@@ -10,7 +10,7 @@ var gulp = require("gulp"),
 
 var config = {
     raw: "./raw",
-    assets: "./assets"
+    assets: "./"
 };
 
 var errorHandler = {
@@ -27,7 +27,6 @@ gulp.task('sass', function() {
       .src(config.raw + "/sass/**/*.scss")
       .pipe(scss())
       .pipe(autoprefixer())
-      .pipe(gulp.dest(config.assets + "/css"))
       .pipe(csso({ comment: false }))
       .pipe(gulp.dest(config.assets + "/css"))
       .pipe(browserSync.reload({ stream: true }));

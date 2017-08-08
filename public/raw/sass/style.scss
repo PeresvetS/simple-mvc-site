@@ -20,12 +20,21 @@ html {
     font-family: Lato;
 }
 
+button .close {
+    -webkit-appearance: none;
+    padding: $null;
+    cursor: pointer;
+    background: 0 0;
+    border: $null;
+}
+
 main {
     height: 38.8%;
     margin: auto;
     padding-top: 5.7%;
     width: 65.6%;
 }
+
 
 .basket {
     @extend .left;
@@ -37,7 +46,7 @@ main {
 }
 
 .background-wrapper {
-    background-image: "../../assets/img/backgroud/boots";
+    background-image: url("../img/background/boots.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     border-bottom-color: $white-border;
@@ -87,8 +96,7 @@ main {
 .btn-my-acc {
     @extend .btn-pink;
     height: 38px;
-    width: 130px;
-    display: none !important;
+    width: 130px;   
 }
 
 .btn-my-acc-wrap {
@@ -102,7 +110,13 @@ main {
     border-radius: 0px;
     color: $white-cl;
     font-size: 15px;
+    &:hover {
+        background-color: $pink-hover !important;
+        color: $white-cl;
+       font-weight: 700;
+    }
 }
+
 
 .border-nav {
     border: $nav-border;
@@ -220,6 +234,14 @@ main {
     height: 777px;
 }
 
+.checkbox label, .radio label {
+    min-height: 20px;
+    margin-left: 5px;
+    margin-bottom: 0;
+    font-weight: 400;
+    cursor: pointer;
+}
+
 .choice-block {
     background-color: $choice-item-bg-cl;
     border-style: solid;
@@ -263,8 +285,29 @@ main {
     }
 }
 
+.close {
+    float: right;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1;
+    color: $black;
+    text-shadow: $white-text-shadow;
+    filter: $light-opacity;
+    opacity: .2;
+}
+
 .content {
     height: $full;
+}
+
+.content-login {
+    background: transparent;
+    padding: 20px 0 20px 0;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: $uniform-50;
+    width: 80%;
 }
 
 .container-style {
@@ -339,6 +382,12 @@ main {
         font-size: 14px;
         font-weight: 700;
     }
+}
+
+.header-logo {
+    padding: $center-header;
+    position: relative;
+    color: $white-cl;
 }
 
 .height-full {
@@ -492,6 +541,14 @@ main {
     margin-left: 51%;
 }
 
+.m-t {
+    margin-top: 1rem !important;
+}
+
+.m-b-0 {
+    margin-bottom: 0 !important;
+}
+
 .mini-discr {
     p {
         &:nth-child(1) {
@@ -576,6 +633,38 @@ main {
 .p-5 {
     padding: 5rem;
     clear: both;
+}
+
+.panel {
+    margin-bottom: 20px;
+    background-color: $white-cl;
+    border: $slim-border;
+    border-color: $grey-border;
+    border-radius: $light-border-radius;
+    -webkit-box-shadow: $shadow-box;
+    box-shadow: $shadow-box;
+}
+
+.panel-body {
+    padding: 15px;
+}
+
+.panel-heading {
+    background-color: $light-panel-grey;
+    border-color: $grey-border;
+    border-bottom: $slim-border;
+    border-top-left-radius: $light-border-radius;
+    border-top-right-radius: $light-border-radius;
+    color: $violet-cl;
+    padding: 10px 15px;
+ 
+}
+
+.panel-title {
+    margin-top: $null;
+    margin-bottom: $null;
+    font-size: 16px;
+    color: inherit;
 }
 
 .photo-block {
