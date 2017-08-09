@@ -9,6 +9,8 @@ class Application {
     private $router;
     private $configuration = [];
     private $db = NULL;
+    private $secure;
+    private $auth;
 
     public function run()
     {
@@ -62,11 +64,23 @@ class Application {
         return $this->router;
     }
 
-    public function db()
+    public function db() : Db
     {
         if($this->db == NULL){
             $this->db = new Db();
         }
         return $this->db;
+    }
+
+    public function secure() : Secure
+    {
+        $this->secure = new Secure();
+        return $this->secure;
+    }
+
+    public function auth() : Authorization
+    {
+        $this->auth = new Authorization();
+        return $this->auth;
     }
 }

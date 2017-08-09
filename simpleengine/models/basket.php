@@ -9,13 +9,25 @@ class Basket implements DbModelInterface
     private $id_user;
     private $productsArray = [];
 
-    public function __construct(number $id_user){
+
+    /**
+     * __construct
+     * @param number $id_user 
+     */
+    public function __construct(number $id_user)
+    {
         if((int)$id_user > 0){
             $this->id_user = $id_user;
             $this->find($id_user);
         }
     }
 
+
+    /**
+     * find
+     * @param mixed $id_user 
+     * @return array 
+     */
     public function find(number $id_user)
     {
         $app = Application::instance();
@@ -24,7 +36,7 @@ class Basket implements DbModelInterface
                 LEFT JOIN products p ON p.id = b.id_product
                 WHERE b.id_user = ".(int)$id_user."
                 AND b.id_order IS NULL";
-        $result = $app->db()->getArrayBySqlQuery($sql);
+        $result = $app->db()->getAssocResult($sql);
 
         if(!empty($result)){
             foreach($result as $item){

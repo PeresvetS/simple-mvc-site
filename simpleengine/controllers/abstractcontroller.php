@@ -5,7 +5,7 @@ namespace simpleengine\controllers;
 
 
 
-use simpleengine\models\AuthorizationModel;
+use simpleengine\core\Authorization;
 use simpleengine\core\Application;
 use simpleengine\core\exception\ApplicationException;
 
@@ -20,13 +20,30 @@ abstract class AbstractController
      */
     protected function isLogIn() 
     {
-        $auth = new AuthorizationModel();
-        return $auth->alreadyLoggedIn() || $auth->checkAuthWithCookie();
+        return Authorization::alreadyLoggedIn() || Authorization::checkAuthWithCookie();
     }
 
-    protected function isMaster() 
+
+    /**
+     * isMaster
+     * @return bool 
+     */
+    protected function isMaster() : bool
     {
-        return $auth->isMaster();
+
+        return Authorization::isMaster();
+    }
+
+
+    /**
+     * getSecureQuery
+     * @param string $query 
+     * @param number $sub 
+     * @return mixed 
+     */
+    protected function getSecureQuery(string  $query, number $sub): mixed
+    {
+        return Application::instance()->secure()->getSecureQuery($query, $sub);
     }
 
 

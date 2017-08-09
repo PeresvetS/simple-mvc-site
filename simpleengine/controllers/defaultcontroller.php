@@ -17,6 +17,7 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    public function actionDefault(){
+    public function actionDefault()
+    {
     }
 }

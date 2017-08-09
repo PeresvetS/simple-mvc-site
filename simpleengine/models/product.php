@@ -5,37 +5,40 @@ namespace simpleengine\models;
 
 use \simpleengine\core\Application;
 
-class Good implements DbModelInterface
+class Product implements DbModelInterface
 {
 
 
     /**
      * __construct
-     * @param number $idUser 
+     * @param number $goodNumber 
      */
-    public function __construct(number $idUser)
+    public function __construct(number $idGood)
     {
-        $this->db = Application::instance()->db();
-        $this->find($idUser);
+        if(is_numeric($idGood) && $idGood > 0) {
+            $this->idGood = $idGood;
+            $this->db = Application::instance()->db();
+            
+        } else {
+            location("/");
+        }
     }
-
 
 
     /**
      * find
-     * @param number $idUser 
      * @return array 
      */
-    public function find($idUser) : array
+    public function find() : array
     {
         $sql = "SELECT `good_name` as name,
                     `good_price` as price,
                     `good_description` as description,
                     `good_img` as img
                     FROM `goods`
-                    WHERE `is_active` = 1";
-        return $this->db()->getAssocResult($sql);
-        
+                    WHERE `id_good` = $this->idGood
+                    AND `is_active` = 1";
+        return $this->db()->getRowResult($sql);
     }
 
 
