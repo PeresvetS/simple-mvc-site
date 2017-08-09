@@ -35,7 +35,6 @@ main {
     width: 65.6%;
 }
 
-
 .basket {
     @extend .left;
     background: $backet-ico;
@@ -46,13 +45,14 @@ main {
 }
 
 .background-wrapper {
+    background-attachment: fixed;
+    background-color: $black-full;
     background-image: url("../img/background/boots.png");
     background-repeat: no-repeat;
-    background-attachment: fixed;
     border-bottom-color: $white-border;
     position: fixed;
     bottom: $null;
-    left: $null;    
+    left: $null;
     right: $null;
     top: $null;
     overflow: auto;
@@ -62,7 +62,7 @@ main {
     background: $bottom-img;
     height: 438px;
     margin: auto;
-    width: 1600px;  
+    width: 1600px;
 }
 
 .browse-div-btn {
@@ -96,7 +96,7 @@ main {
 .btn-my-acc {
     @extend .btn-pink;
     height: 38px;
-    width: 130px;   
+    width: 130px;
 }
 
 .btn-my-acc-wrap {
@@ -113,10 +113,9 @@ main {
     &:hover {
         background-color: $pink-hover !important;
         color: $white-cl;
-       font-weight: 700;
+        font-weight: 700;
     }
 }
-
 
 .border-nav {
     border: $nav-border;
@@ -234,7 +233,8 @@ main {
     height: 777px;
 }
 
-.checkbox label, .radio label {
+.checkbox label,
+.radio label {
     min-height: 20px;
     margin-left: 5px;
     margin-bottom: 0;
@@ -657,7 +657,6 @@ main {
     border-top-right-radius: $light-border-radius;
     color: $violet-cl;
     padding: 10px 15px;
- 
 }
 
 .panel-title {
