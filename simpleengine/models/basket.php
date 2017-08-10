@@ -4,22 +4,19 @@ namespace simpleengine\models;
 
 use simpleengine\core\Application;
 
-class Basket implements DbModelInterface
+class Basket extends CommonModel implements DbModelInterface
 {
-    private $id_user;
     private $productsArray = [];
-
-
+    private $idUser;
     /**
      * __construct
      * @param number $id_user 
      */
-    public function __construct(number $id_user)
+    public function __construct(number $idUser)
     {
-        if((int)$id_user > 0){
-            $this->id_user = $id_user;
-            $this->find($id_user);
-        }
+        parent::__construct();
+        $this->$idUser = $idUser;
+        $this->find($this->id_user);
     }
 
 
@@ -55,11 +52,18 @@ class Basket implements DbModelInterface
         // TODO: Implement save() method.
     }
 
-    public function getProductsArray() : array{
+    public function getProductsArray() : array
+    {
         return $this->productsArray;
     }
 
-    public function deactivate() {
-        //
+    /**
+     * delete
+     * @return bool 
+     */
+    public function delete() : bool
+    {
+        $sql = "DELETE FROM basket WHERE id_user = $this->$idUser";
+        return $this->db()->executeQuery($sql);
     }
 }

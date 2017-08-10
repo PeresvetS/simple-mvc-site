@@ -5,28 +5,37 @@ namespace simpleengine\models;
 
 use \simpleengine\core\Application;
 
-class Good implements DbModelInterface
+class Good extends CommonModel implements DbModelInterface
 {
 
-
-    /**
-     * __construct
-     * @param number $idUser 
-     */
-    public function __construct(number $idUser)
+    public function __construct()
     {
-        $this->db = Application::instance()->db();
-        $this->find($idUser);
+        parent::__construct();
     }
-
 
 
     /**
      * find
-     * @param number $idUser 
+     * @return mixed 
+     */
+    public function find($idGood) : array
+    {
+        $sql = "SELECT `good_name` as name,
+                    `good_price` as price,
+                    `good_description` as description,
+                    `good_img` as img
+                    FROM `goods`
+                    WHERE `id_good` = $idGood
+                    AND `is_active` = 1";
+        return $this->db()->getRowResult($sql);
+    }
+
+
+    /**
+     * findAll
      * @return array 
      */
-    public function find($idUser) : array
+    public function findAll() : array
     {
         $sql = "SELECT `good_name` as name,
                     `good_price` as price,
@@ -42,12 +51,10 @@ class Good implements DbModelInterface
 
     public function save()
     {
-        // TODO: Implement save() method.
     }
 
 
-    public function deactivate() 
+    public function delete() 
     {
-        //
     }
 }

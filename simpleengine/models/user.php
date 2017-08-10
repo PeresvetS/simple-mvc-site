@@ -8,79 +8,72 @@ use simpleengine\core\Application;
 class User implements DbModelInterface
 {
     private $id;
-    private $firstname;
-    private $lastname;
-    private $middlename;
+    private $userName;
     private $email;
 
     public function __construct(number $id = null){
-        if((int)$id > 0){
-            $this->find($id);
-        }
+        parent::__construct();
+        $this->find($id);
     }
 
-    public function auth(){
 
-    }
-
+    /**
+     * find
+     * @param number $id 
+     */
     public function find(number $id)
     {
-        $app = Application::instance();
         $sql = "SELECT * FROM users WHERE id = ".(int)$id;
-        $result = $app->db()->getArrayBySqlQuery($sql);
+        $result = $this->db()->getRowResult($sql);
 
-        if(isset($result[0])){
-            $this->id = $result[0]["id_user"];
-            $this->firstname = $result[0]["first_name"];
-            $this->lastname = $result[0]["last_name"];
-            $this->middlename = $result[0]["middle_name"];
-            $this->email = $result[0]["email"];
+        if(isset($result)){
+            $this->id = $result["id_user"];
+            $this->userName = $result["user_name"];
+            $this->email = $result["user_email"];
         }
     }
 
-    public function getUsersBasket(){
+
+
+
+    /**
+     * getUsersBasket
+     * @return array 
+     */
+    public function getUsersBasket() : array
+    {
         $basket = new Basket($this->id);
         return $basket->getProductsArray();
     }
 
-    public function save()
-    {
-        // TODO: Implement save() method.
-    }
 
-    public function deactivate() {
-        //
-    }
 
     /**
-     * @return string firstname
+     * getName
+     * @return string userName
      */
-    public function getFirstname()
+    public function getName()
     {
-        return $this->firstname;
+        return $this->userName;
     }
 
-    /**
-     * @return string lastname
-     */
-    public function getLastname()
-    {
-        return $this->lastname;
-    }
 
     /**
-     * @return string middlename
-     */
-    public function getMiddlename()
-    {
-        return $this->middlename;
-    }
-
-    /**
+     * getEmail
      * @return string email
      */
     public function getEmail()
     {
         return $this->email;
+    }
+
+
+
+    public function save()
+    {
+    }
+
+    public function delete() 
+    {
     }
 }
