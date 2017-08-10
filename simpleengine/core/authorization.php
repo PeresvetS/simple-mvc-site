@@ -11,7 +11,7 @@ class Authorization
      * checkAuthWithCookie
      * @return bool 
      */
-    public function checkAuthWithCookie() : bool
+    public static function checkAuthWithCookie() : bool
     {
         $result = false;
 
@@ -36,7 +36,7 @@ class Authorization
      * alreadyLoggedIn
      * @return bool 
      */
-    public function alreadyLoggedIn() : bool
+    public static function alreadyLoggedIn() : bool
     {
         return isset($_SESSION['user']);
     }
@@ -46,7 +46,7 @@ class Authorization
      * isMaster
      * @return bool 
      */
-    public function isMaster(): bool
+    public static function isMaster(): bool
     {
         return isset($_SESSION['status']) ?
         $_SESSION['status'] == 'full_controll' :

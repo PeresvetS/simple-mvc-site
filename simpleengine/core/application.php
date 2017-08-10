@@ -6,11 +6,12 @@ use simpleengine\core\exception\ApplicationException;
 class Application {
     use Singleton;
 
-    private $router;
     private $configuration = [];
+    private $router;
     private $db = NULL;
     private $secure;
     private $auth;
+    private $file;
 
     public function run()
     {
@@ -82,5 +83,11 @@ class Application {
     {
         $this->auth = new Authorization();
         return $this->auth;
+    }
+
+    public function file() : File
+    {
+        $this->auth = new File();
+        return $this->file;
     }
 }
