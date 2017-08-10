@@ -19,5 +19,6 @@ class DefaultController extends AbstractController
 
     public function actionDefault()
     {
+        header("Location: /");
     }
 }

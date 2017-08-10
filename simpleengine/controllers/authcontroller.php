@@ -2,14 +2,14 @@
 
 namespace simpleengine\controllers;
 
-use simpleengine\models\AuthorizationModel;
+use simpleengine\models\AuthModel;
 
 class AuthController extends AbstractController
 {
     
     public function actionIndex()
     {
-        location('/login/');
+       header("Location: /login/");
     }
    
 
@@ -19,16 +19,16 @@ class AuthController extends AbstractController
         $isMaster = false; 
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $result = AuthModel::authWithCredentials();
+            $result = AuthModel::auth();
 
             $result ?
-            location('/') :
+             header("Location: /login/") :
             $message = false;
         }
 
 
         if ($this->isLogin()) {
-            location('/');
+             header("Location: /login/");
         }
         else {
             echo $this->render("auth/login", [
@@ -45,7 +45,7 @@ class AuthController extends AbstractController
         $message = false;
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $result = AuthModel::registerCredentials();
+            $result = AuthModel::register();
 
             $result ?
             $message = 'success' :
@@ -54,7 +54,7 @@ class AuthController extends AbstractController
 
 
         if ($this->isLogin()) {
-            location('/');
+            header("Location: /");
         } 
         else {
             echo $this->render("auth/register", [
