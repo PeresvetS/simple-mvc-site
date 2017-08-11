@@ -9,8 +9,8 @@ class Basket extends CommonModel implements DbModelInterface
 {
     private $productsArray = [];
     private $idUser;
-    private $basketArray = [
-        "goods" => 0,
+    private $commonParams = [
+        "count" => 0,
         "amount" => 0
     ];
     
@@ -20,7 +20,8 @@ class Basket extends CommonModel implements DbModelInterface
     {
         parent::__construct();
         $this->$idUser = $idUser;
-        $this->find($this->id_user);
+        $this->find($this->idUser);
+        $this-prepareBasketBlock($this->idUser);
     }
 
 
@@ -74,8 +75,9 @@ class Basket extends CommonModel implements DbModelInterface
         $basketData = $this->db->getRowResult($sql);
 
         if(isset($basketData['goods'])){
-           $this->$basketArray['goods'] = $basketData['goods'];
-           $this->$basketArray['amount'] = $basketData['amount'];
+           $this->$commonParams['goods'] = $basketData['goods'];
+           $this->$commonParams['amount'] = $basketData['amount'];
+           $_SESSION['amount'] = $basketData['amount']
         }
     }
 
@@ -92,16 +94,16 @@ class Basket extends CommonModel implements DbModelInterface
 
  
     
-    public function getBasketArray() : array
+    public function getCommonParams() : array
     {
-        return $this->basketArray;
+        return $this->commonParams;
     }
 
 
 
 
     
-    public function doAction(sting $action)
+    public function doAction(sting $action = "")
     {
         switch($action) {
             case "add_good":
@@ -109,6 +111,8 @@ class Basket extends CommonModel implements DbModelInterface
                 break;
             case "remove_good":
                 $this->removeGoodFromBasket();
+                break;
+            default:
                 break;
         }
     }

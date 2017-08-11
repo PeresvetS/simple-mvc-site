@@ -12,22 +12,21 @@ use simpleengine\core\exception\ApplicationException;
 abstract class AbstractController
 {
     
-    // check state of user
+    protected $requestedAction = "index";
 
-    /**
-     * isLogIn
-     * @return bool 
-     */
-    protected function isLogIn() 
+
+    protected function isPostReq() : bool
+    {
+        return $_SERVER['REQUEST_METHOD'] == 'POST';
+    }
+
+
+    protected function isLogIn() : bool
     {
         return Authorization::alreadyLoggedIn() || Authorization::checkAuthWithCookie();
     }
 
 
-    /**
-     * isMaster
-     * @return bool 
-     */
     protected function isMaster() : bool
     {
 
@@ -35,50 +34,38 @@ abstract class AbstractController
     }
 
 
-    /**
-     * getSecureQuery
-     * @param string $query 
-     * @param number $sub 
-     * @return mixed 
-     */
-    protected function getSecureQuery(string  $query, number $sub): mixed
+    protected function getSecureQuery(string  $query, number $sub) : mixed
     {
         return Application::instance()->secure()->getSecureQuery($query, $sub);
     }
 
 
-    // render Page
-
-    protected $requestedAction = "index";
-
+  
     abstract public function actionIndex();
+    
 
-    /**
-     * render
-     * @param string $template 
-     * @param array $variables 
-     * @return string 
-     */
     protected function render(string $template = "", array $variables = []) : string
     {
+        $app = Application::instance();
         if($template == "") {
             $template = $this->requestedAction;
         }
 
-        $dir = Application::instance()->get("DIR")["VIEWS"];
-        $templateDir = mb_strtolower(substr(Application::instance()->router()->getController(), 0, -10), "UTF-8");
+        $dir = $app->get("DIR")["VIEWS"];
+        $templateDir = mb_strtolower(substr($app->router()->getController(), 0, -10), "UTF-8");
 
         try {
             $loader = new \Twig_Loader_Filesystem($dir);
             $twig = new \Twig_Environment($loader, []);
         }
         catch(\Exception $e){
-            throw new ApplicationException("Template " . $templateDir . $template . " not found", 0504);
+            header("Location: /error/404");
         }
 
         return $twig->render($template . ".tmpl", $variables);
     }
 
+    
     public function setRequestedAction(string $actionName)
     {
         $this->requestedAction = $actionName;

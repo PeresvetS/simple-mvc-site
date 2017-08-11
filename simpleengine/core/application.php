@@ -15,6 +15,7 @@ class Application {
 
     public function run()
     {
+        session_start();
         $this->router = new Router();
 
         $class = "\\simpleengine\\" . $this->router->getPackage() . "\\" . $this->router->getController();

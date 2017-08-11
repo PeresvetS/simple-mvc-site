@@ -16,7 +16,23 @@ class Master extends CommonModel
 
 
 
-    public function createGood(bool $isActiveRaw = true) : bool
+    public function doAction(string $action = "") : bool
+    {
+        switch ($action) {
+            case "create_good":
+                return $this->createGood();
+            case "update_good":
+                return $this->updateGood();
+            case "delete_good":
+                return $this->deleteGood();
+            default:
+                break;
+        }
+    } 
+
+
+
+    public function createGood() : bool
     {
         $secure = $this->secure;
         $goodName = $secure->getSecureQuery($_POST["good_name"], 100);
@@ -24,7 +40,8 @@ class Master extends CommonModel
         $goodType = $secure->getSecureQuery($_POST["good_type"], 20);
         $goodDescription = $secure->getSecureQuery($_POST["good_description"], 9999);
         $goodImg = $secure->getSecureQuery($_POST["good_img"], 100);
-        $isActive = $isActiveRaw ? 1 : 0;
+        $isActiveRaw = $_POST["is_active"];
+        $isActive = $isActiveRaw == "true" ? 1 : 0;
 
         $sql = "INSERT INTO `goods` (`id_good`, `good_name`, `good_price`, `good_type`,
                                     `good_description`, `good_img`, `is_active`)
@@ -37,35 +54,40 @@ class Master extends CommonModel
 
 
 
-    public function updateGood(number $idGoodRaw = NULL,  bool $isActiveRaw = true) : bool
+    public function updateGood() : bool
     {
         $secure = $this->secure;
-        $idGood = (int)$secure->getSecureQuery($idGoodRaw, 11);
-        $goodName = $secure->getSecureQuery($_POST["good_name"], 100);
-        $goodPrice = $secure->getSecureQuery($_POST["good_price"], 20);
-        $goodType = $secure->getSecureQuery($_POST["good_type"], 20);
-        $goodDescription = $secure->getSecureQuery($_POST["good_description"], 9999);
-        $isActive = $isActiveRaw ? 1 : 0;
+        $idGood = (int)$secure->getSecureQuery($_POST["id_good"], 11);
+        $updateImg = $this->updateImg($idGood);
 
+        if ($updateImg) {
+            $goodName = $secure->getSecureQuery($_POST["good_name"], 100);
+            $goodPrice = $secure->getSecureQuery($_POST["good_price"], 20);
+            $goodType = $secure->getSecureQuery($_POST["good_type"], 20);
+            $goodDescription = $secure->getSecureQuery($_POST["good_description"], 9999);
+            $isActiveRaw = $_POST["is_active"];
+            $isActive = $isActiveRaw == "true" ? 1 : 0;
 
-        $sql = "UPDATE `goods` SET `good_name` = '$goodName', `good_price` = '$goodPrice'
-            `good_type` = '$goodType', `good_description` = '$goodDescription', 
-            `is_active` = $isActive
-            WHERE `id_good` = $idGood";
+            $sql = "UPDATE `goods` SET `good_name` = '$goodName', `good_price` = '$goodPrice'
+                `good_type` = '$goodType', `good_description` = '$goodDescription', 
+                `is_active` = $isActive
+                WHERE `id_good` = $idGood";
 
-        return $this->db->executeQuery($sql);
+            return $this->db->executeQuery($sql);
+        }
+        return false;
     }
 
     
 
     
-    public function updateImg(number $idGoodRaw)
+    public function updateImg(number $idGood)
     {
         $file = $this->app->file();
-        $imgPath = $this->getProductImg($idProduct);
+        $imgPath = $this->getGoodImg($idGood);
 
-        $deleteResult = $file->deleteFile($imgPath);
-        if(!$deleteResult) {
+        $deleteImg = $file->deleteFile($imgPath);
+        if(!$deleteImg) {
             return false;
         }
 
@@ -80,20 +102,19 @@ class Master extends CommonModel
 
 
     
-    public function deleteGood(number $idGoodRaw) : bool
+    public function deleteGood() : bool
     {
         $file = $this->app->file();
-        $idGood = (int)$this->secure()->getSecureQuery($idProductRaw);
+        $idGood = (int)$this->secure->getSecureQuery($_POST["id_good"], 11);
         $imgPath = $this->getProductImg($idProduct);
+        $deleteImg = $file->deleteFile($imgPath);
 
-        $deleteResult = $file->deleteFile($imgPath);
-        if(!$deleteResult) {
-            return false;
+        if ($deleteImg) {
+            $sql = "DELETE FROM `goods` WHERE `id_good` = $idProduct LIMIT 1";
+            return $this->db->executeQuery($sql);
         }
-        $sql = "DELETE FROM `goods` WHERE `id_good` = $idProduct LIMIT 1";
-        return $this->db->executeQuery($sql);
+        return false;
     }
-
 
 
 

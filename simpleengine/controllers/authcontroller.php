@@ -9,31 +9,30 @@ class AuthController extends AbstractController
     
     public function actionIndex()
     {
-       header("Location: /login/");
+       header("Location: /auth/login");
     }
    
 
     public function actionLogin()
     {
-        $message = true;
+        $successLogin = true;
         $isMaster = false; 
         
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $result = AuthModel::auth();
+        if ($this->isPostReq()) {
 
-            $result ?
-             header("Location: /login/") :
-            $message = false;
+            AuthModel::auth() ?
+            header("Location: /") :
+            $successLogin = false;
         }
 
 
         if ($this->isLogin()) {
-             header("Location: /login/");
+             header("Location: /");
         }
         else {
             echo $this->render("auth/login", [
                 "public_url" => "../",
-                "message" => $message,
+                "message" => $successLogin,
             ]);
         }
 
@@ -42,12 +41,11 @@ class AuthController extends AbstractController
 
     public function actionRegister()
     {
-        $message = false;
+        $registerMessage = null;
 
-        if ($_SERVER['REQUEST_METHOD'] == 'POST'){
-            $result = AuthModel::register();
+        if ($this->isPostReq()){
 
-            $result ?
+            AuthModel::register() ?
             $message = 'success' :
             $message = 'error';
         }
@@ -59,8 +57,16 @@ class AuthController extends AbstractController
         else {
             echo $this->render("auth/register", [
                 "public_url" => "../",
-                "message" => $message,
+                "message" => $registerMessage,
             ]);
         }
+    }
+
+
+    public function actionLogout()
+    {
+        unset($_SESSION["user"]);
+        session_destroy();
+        header("Location: /");
     }
 }

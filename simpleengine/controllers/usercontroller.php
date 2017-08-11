@@ -10,7 +10,7 @@ class UserController extends AbstractController
 
     public function actionIndex()
     {
-        if (isset($_SESSION['user'])) {
+        if ($this->isLogin()) {
             
             $user = new User($_SESSION['user']['id_user']);
 
@@ -18,10 +18,11 @@ class UserController extends AbstractController
                 "public_url" => "../",
                 "isLogin" => $this->isLogin(),
                 "isMaster" => $this->isMaster(),
+                "basketParams" => null,
             ]);
         }
         else {
-            location('/');
+            header("Location: /auth/login");
         }
        
     }
