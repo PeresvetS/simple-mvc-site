@@ -7,7 +7,7 @@ function simpleEngineAutoloader($class)
     $class_data = explode("\\", $class);
 
     $path = __DIR__."/../../";
-    //$path = $_SERVER["DOCUMENT_ROOT"]."/..";
+
 
     foreach($class_data as $item) {
         $path .= "/".strtolower($item);

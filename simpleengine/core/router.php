@@ -84,9 +84,7 @@ class Router
         }
     }
 
-    /**
-     * @param $activeRule
-     */
+
     private function setUpRouting(array $activeRule){
         
         $urlParts = [];
@@ -166,10 +164,8 @@ class Router
         }
     }
 
-    /**
-     * @return string
-     */
-    public function getParameter()
+
+    public function getParameter() : string
     {
         return $this->parameter;
     }

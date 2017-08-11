@@ -14,18 +14,8 @@ class Master extends CommonModel
         parent::__construct();
     }
 
-    public function find($id)
-    {
-
-    }
 
 
-
-    /**
-     * createGood
-     * @param bool $isActiveRaw 
-     * @return bool 
-     */
     public function createGood(bool $isActiveRaw = true) : bool
     {
         $secure = $this->secure;
@@ -41,18 +31,12 @@ class Master extends CommonModel
                 VALUES(NULL, '$goodName', '$goodPrice', '$goodType',
                         '$goodDescription', '$goodImg', $isActive)";
 
-        return executeQuery($sql);
+        return $this->db->executeQuery($sql);
     }
 
 
 
 
-    /**
-     * updateGood
-     * @param number $idGoodRaw 
-     * @param bool $isActiveRaw 
-     * @return bool 
-     */
     public function updateGood(number $idGoodRaw = NULL,  bool $isActiveRaw = true) : bool
     {
         $secure = $this->secure;
@@ -69,51 +53,51 @@ class Master extends CommonModel
             `is_active` = $isActive
             WHERE `id_good` = $idGood";
 
-        return executeQuery($sql);
+        return $this->db->executeQuery($sql);
     }
 
     
 
-    /**
-     * updateImg
-     * @param number $idGoodRaw
-     * @return bool 
-     */
+    
     public function updateImg(number $idGoodRaw)
     {
-        $file = $this->app->file;
-        $imgPath = getProductImg($idProduct);
-        $file->deleteFile($imgPath);
-        $goodImgPath = $file->uploadFile();
-        $sql = "UPDATE `goods` SET `good_img` = '$goodImgPath' WHERE `id_good` = $idGood";
+        $file = $this->app->file();
+        $imgPath = $this->getProductImg($idProduct);
 
-        return executeQuery($sql);
+        $deleteResult = $file->deleteFile($imgPath);
+        if(!$deleteResult) {
+            return false;
+        }
+
+        $goodImgPath = $file->uploadFile();
+        if ($goodImgPath) {
+            $sql = "UPDATE `goods` SET `good_img` = '$goodImgPath' WHERE `id_good` = $idGood";
+            return $this->db->executeQuery($sql);
+        }
+        return false;
     }
 
 
-    /**
-     * deleteGood
-     * @param number $idGoodRaw 
-     * @return bool 
-     */
+
+    
     public function deleteGood(number $idGoodRaw) : bool
     {
-        $file = $this->app->file;
-        $idGood = (int)$this->secure->getSecureQuery($idProductRaw);
-        $imgPath = getProductImg($idProduct);
-        $file->deleteFile($imgPath);
+        $file = $this->app->file();
+        $idGood = (int)$this->secure()->getSecureQuery($idProductRaw);
+        $imgPath = $this->getProductImg($idProduct);
+
+        $deleteResult = $file->deleteFile($imgPath);
+        if(!$deleteResult) {
+            return false;
+        }
         $sql = "DELETE FROM `goods` WHERE `id_good` = $idProduct LIMIT 1";
-        return $this->secure->executeQuery($sql);
+        return $this->db->executeQuery($sql);
     }
 
 
 
 
-    /**
-     * getGoodImg
-     * @param number $idGoodRaw 
-     * @return string 
-     */
+
     private function getGoodImg(number $idGood) : string
     {
         $sql = "SELECT `good_img` FROM `goods` WHERE `id_good` = $idGood";

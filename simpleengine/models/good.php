@@ -14,10 +14,7 @@ class Good extends CommonModel implements DbModelInterface
     }
 
 
-    /**
-     * find
-     * @return mixed 
-     */
+
     public function find($idGood) : array
     {
         $sql = "SELECT `good_name` as name,
@@ -27,14 +24,11 @@ class Good extends CommonModel implements DbModelInterface
                     FROM `goods`
                     WHERE `id_good` = $idGood
                     AND `is_active` = 1";
-        return $this->db()->getRowResult($sql);
+        return $this->db->getRowResult($sql);
     }
 
 
-    /**
-     * findAll
-     * @return array 
-     */
+    
     public function findAll() : array
     {
         $sql = "SELECT `good_name` as name,
@@ -43,18 +37,14 @@ class Good extends CommonModel implements DbModelInterface
                     `good_img` as img
                     FROM `goods`
                     WHERE `is_active` = 1";
-        return $this->db()->getAssocResult($sql);
+        return $this->db->getAssocResult($sql);
         
     }
 
 
 
-    public function save()
-    {
-    }
+    public function save() {}
 
 
-    public function delete() 
-    {
-    }
+    public function delete() {}
 }

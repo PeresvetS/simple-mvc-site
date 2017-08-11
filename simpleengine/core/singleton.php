@@ -16,7 +16,7 @@ trait Singleton {
     static public function instance() {
         return
             self::$instance===null
-                ? self::$instance = new static()//new self()
+                ? self::$instance = new static()
                 : self::$instance;
     }
 }

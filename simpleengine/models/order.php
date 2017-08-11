@@ -10,10 +10,6 @@ class Order extends CommonModel implements DbModelInterface
 {
 
 
-    /**
-     * __construct
-     * @param number $idUser 
-     */
     public function __construct(number $idUser)
     {
         parent::__construct($idUser);
@@ -22,24 +18,17 @@ class Order extends CommonModel implements DbModelInterface
     }
 
 
-    /**
-     * find
-     * @param number $idUser 
-     * @return array 
-     */
+
     public function find($idUser)
     {
         $sql = "SELECT good_name, id_good, good_price FROM goods
         LEFT JOIN basket USING(id_good)
         WHERE id_user = $idUser";
-        return $this->db()->getAssocResult($sql);
+        return $this->db->getAssocResult($sql);
     }
 
 
-    /**
-     * save
-     * @return bool 
-     */
+
     public function save() : bool
     {
         $date =  (string)date("d.m.Y");
@@ -51,9 +40,6 @@ class Order extends CommonModel implements DbModelInterface
     }
 
 
-
-    public function delete() 
-    {
-    }
+    public function delete() {}
 
 }

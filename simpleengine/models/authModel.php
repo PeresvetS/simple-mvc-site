@@ -11,10 +11,7 @@ class AuthModel
         parent::__construct();
     }
 
-    /**
-     * authWithCredentials
-     * @return bool 
-     */
+
     public static function auth() : bool
     {
         $isAuth = false;
@@ -32,9 +29,10 @@ class AuthModel
                 if($auth->checkPassword($password, $user_data['user_password'])) {
                     $isAuth = true;
                     if ($username == 'master') {
-                    $_SESSION['status'] = 'full_controll';
+                        $_SESSION['status'] = 'full_controll';
                     }
-                    if(isset($_POST['rememberme']) && $_POST['rememberme'] == 'on'){
+                    if(isset($_POST['remember']) && $_POST['remember'] == 'on'){
+                        
                         setcookie("cookie_hash", $user_data['user_password'], time()+86400);
                     }
                     $_SESSION['user'] = $user_data;
@@ -45,11 +43,7 @@ class AuthModel
     }
 
 
-    /**
-     * registerCredentials
-     * @param string $password 
-     * @return bool 
-     */
+
     public static function register() : bool
     {   
         $secure = $this->secure;

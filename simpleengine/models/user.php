@@ -17,14 +17,11 @@ class User implements DbModelInterface
     }
 
 
-    /**
-     * find
-     * @param number $id 
-     */
+
     public function find(number $id)
     {
         $sql = "SELECT * FROM users WHERE id = ".(int)$id;
-        $result = $this->db()->getRowResult($sql);
+        $result = $this->db->getRowResult($sql);
 
         if(isset($result)){
             $this->id = $result["id_user"];
@@ -35,11 +32,7 @@ class User implements DbModelInterface
 
 
 
-
-    /**
-     * getUsersBasket
-     * @return array 
-     */
+    
     public function getUsersBasket() : array
     {
         $basket = new Basket($this->id);
@@ -48,32 +41,22 @@ class User implements DbModelInterface
 
 
 
-    /**
-     * getName
-     * @return string userName
-     */
+
     public function getName()
     {
         return $this->userName;
     }
 
 
-    /**
-     * getEmail
-     * @return string email
-     */
+
+    
     public function getEmail()
     {
         return $this->email;
     }
 
 
+    public function save() {}
 
-    public function save()
-    {
-    }
-
-    public function delete() 
-    {
-    }
+    public function delete() {}
 }

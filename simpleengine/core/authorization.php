@@ -7,10 +7,7 @@ use \simpleengine\core\Application;
 class Authorization 
 {
 
-    /**
-     * checkAuthWithCookie
-     * @return bool 
-     */
+
     public static function checkAuthWithCookie() : bool
     {
         $result = false;
@@ -32,20 +29,14 @@ class Authorization
     }
 
 
-        /**
-     * alreadyLoggedIn
-     * @return bool 
-     */
+
     public static function alreadyLoggedIn() : bool
     {
         return isset($_SESSION['user']);
     }
 
 
-    /**
-     * isMaster
-     * @return bool 
-     */
+ 
     public static function isMaster(): bool
     {
         return isset($_SESSION['status']) ?
@@ -53,11 +44,7 @@ class Authorization
         false;
     } 
 
-    /**
-     * hashPassword
-     * @param string $password 
-     * @return string 
-     */
+
     public function hashPassword(string $password) : string
     {
     $salt = md5(uniqid(SALT2, true));
@@ -66,12 +53,7 @@ class Authorization
     }
 
 
-    /**
-     * checkPassword
-     * @param string $password
-     * @param string $hash
-     * @return bool
-     */
+
     public function checkPassword(string $password, string $hash) : bool
     {
         return crypt($password, $hash) === $hash;

@@ -9,10 +9,7 @@ class Db
 {
     private $pdo;
 
-    /**
-     * __construct
-     * @param string $connection_name 
-     */
+
     public function __construct(string $connection_name = "DB")
     {
         $app = Application::instance();
@@ -34,12 +31,6 @@ class Db
     }
 
 
-    /**
-     * getArrayBySqlQuery
-     * @param string $sql
-     * @param array $param 
-     * @return array 
-     */
     public function getAssocResult(string $sql, $params = []) : array
     {
         $statement = $this->pdo->prepare($sql);
@@ -49,12 +40,7 @@ class Db
     }
 
 
-    /**
-     * getRowResult
-     * @param string $sql 
-     * @param array $params 
-     * @return string 
-     */
+
     public function getRowResult(string $sql, array $params = []) : string
     {
         $arrayResult = getAssocResult($sql);
@@ -66,11 +52,6 @@ class Db
 
 
 
-    /**
-     * executeQuery
-     * @param string $sql 
-     * @return bool 
-     */
     public function executeQuery(string $sql) : bool
     {
         $statement = $this->pdo->prepare($sql);
