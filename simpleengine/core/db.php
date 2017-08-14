@@ -4,6 +4,7 @@
 namespace simpleengine\core;
 
 use \simpleengine\core\Application;
+use PDO;
 
 class Db
 {
@@ -41,9 +42,13 @@ class Db
 
 
 
-    public function getRowResult(string $sql, array $params = []) : string
+    /**
+     * getRowResult
+     * @return mixed 
+     */
+    public function getRowResult(string $sql, array $params = [])
     {
-        $arrayResult = getAssocResult($sql);
+        $arrayResult = $this->getAssocResult($sql);
         if(isset($arrayResult[0])) {
             return $arrayResult[0];
         }

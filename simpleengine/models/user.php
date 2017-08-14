@@ -11,14 +11,14 @@ class User implements DbModelInterface
     private $userName;
     private $email;
 
-    public function __construct(number $id = null){
+    public function __construct(int $id = null){
         parent::__construct();
         $this->find($id);
     }
 
 
 
-    public function find(number $id)
+    public function find(int $id)
     {
         $sql = "SELECT * FROM users WHERE id = ".(int)$id;
         $result = $this->db->getRowResult($sql);

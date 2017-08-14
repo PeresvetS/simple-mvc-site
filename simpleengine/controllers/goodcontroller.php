@@ -10,10 +10,11 @@ class GoodController extends AbstractController
 
     public function actionIndex()
     {   
+        $commonParams = null;
         if ($this->isLogin()) {
             $basket = new Basket($_SESSION["user"]["id_user"]);
             $commonParams = $basket->getCommonParams();
-        }
+        } 
          if ($this->isPostReq()) {
                   $basket->doAction($_POST['action']);
         }
@@ -24,13 +25,14 @@ class GoodController extends AbstractController
             "isLogin" => $this->isLogin(),
             "isMaster" => $this->isMaster(),
             "goods" => $goods,
-            "basketParams" => $commonParams || null
+            "basketParams" => $commonParams
         ]);
     }
     
 
     public function actionItem()
     {   
+        $commonParams = null;
         if ($this->isLogin()) {
             $basket = new Basket($_SESSION["user"]["id_user"]);
             $commonParams = $basket->getCommonParams();
@@ -38,17 +40,19 @@ class GoodController extends AbstractController
          if ($this->isPostReq()) {
                   $basket->doAction($_POST['action']);
         }
-        $idGood = $_GET["id_good"];
+        $idGood = $_GET["id"];
         if (is_numeric($idGood)) {
-            $idGood = $this->getSecureQuery($idGood);
+            $idGood = $this->getSecureQuery($idGood, 11);
             $model = new Good();
             $good = $model->find($idGood);
-            echo $this->render("product/index", [
-                "public_url" => "../",
+            $goods = $model->findFour();
+            echo $this->render("good/item", [
+                "public_url" => "../../",
                 "isLogin" => $this->isLogin(),
                 "isMaster" => $this->isMaster(),
                 "good" => $good,
-                "basketParams" => $commonParams || null
+                "goods" => $goods,
+                "basketParams" => $commonParams
             ]);
         } 
         else {

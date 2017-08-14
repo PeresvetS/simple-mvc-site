@@ -10,7 +10,7 @@ class Order extends CommonModel implements DbModelInterface
 {
 
 
-    public function __construct(number $idUser)
+    public function __construct(int $idUser)
     {
         parent::__construct($idUser);
         $this->$idUser = $idUser;
@@ -19,7 +19,7 @@ class Order extends CommonModel implements DbModelInterface
 
 
 
-    public function find($idUser)
+    public function find(int $idUser)
     {
         $sql = "SELECT good_name, id_good, good_price FROM goods
         LEFT JOIN basket USING(id_good)

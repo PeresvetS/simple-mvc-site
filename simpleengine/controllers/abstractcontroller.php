@@ -34,7 +34,11 @@ abstract class AbstractController
     }
 
 
-    protected function getSecureQuery(string  $query, number $sub) : mixed
+    /**
+     * getSecureQuery
+     * @return mixed 
+     */
+    protected function getSecureQuery(string  $query, int $sub)
     {
         return Application::instance()->secure()->getSecureQuery($query, $sub);
     }

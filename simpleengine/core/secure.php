@@ -8,7 +8,11 @@ class Secure
 {
 
     
-    public function getSecureQuery(string  $query, number $sub): mixed
+    /**
+     * getSecureQuery
+     * @return mixed 
+     */
+    public function getSecureQuery(string  $query, int $sub)
     {
         return substr(htmlspecialchars(urldecode(trim($query))), 0, $sub);
     }

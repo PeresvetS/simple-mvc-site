@@ -119,7 +119,7 @@ class Master extends CommonModel
 
 
 
-    private function getGoodImg(number $idGood) : string
+    private function getGoodImg(int $idGood) : string
     {
         $sql = "SELECT `good_img` FROM `goods` WHERE `id_good` = $idGood";
         $imgLink = $this->db->getRowResult($sql);

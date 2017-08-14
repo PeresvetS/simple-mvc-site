@@ -15,10 +15,11 @@ class Good extends CommonModel implements DbModelInterface
 
 
 
-    public function find($idGood) : array
+    public function find(int $idGood) : array
     {
         $sql = "SELECT `good_name` as name,
                     `good_price` as price,
+                    `good_type` as type,
                     `good_description` as description,
                     `good_img` as img
                     FROM `goods`
@@ -27,12 +28,31 @@ class Good extends CommonModel implements DbModelInterface
         return $this->db->getRowResult($sql);
     }
 
+    
+
+    public function findFour() : array
+    {
+        $sql = "SELECT `id_good` as id, 
+                    `good_name` as name,
+                    `good_price` as price,
+                    `good_type` as type,
+                    `good_description` as description,
+                    `good_img` as img
+                    FROM `goods`
+                    WHERE `is_active` = 1
+                    LIMIT 4";
+        return $this->db->getAssocResult($sql);
+        
+    }
+
 
     
     public function findAll() : array
     {
-        $sql = "SELECT `good_name` as name,
+        $sql = "SELECT `id_good` as id, 
+                    `good_name` as name,
                     `good_price` as price,
+                    `good_type` as type,
                     `good_description` as description,
                     `good_img` as img
                     FROM `goods`

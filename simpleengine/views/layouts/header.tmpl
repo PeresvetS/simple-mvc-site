@@ -15,9 +15,9 @@
                         <div class="search-menu">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse&nbsp;&nbsp;<span class="caret"></span></button>
                             <ul class="dropdown-menu dropdown-fix">
-                                <li><a href="#">summer man clothes</a></li>
-                                <li><a href="#">winter women collection</a></li>
-                                <li><a href="#">autoumn children dress</a></li>
+                                <li><a href="#">summer clothes</a></li>
+                                <li><a href="#">winter collection</a></li>
+                                <li><a href="#">autoumn dresses</a></li>
                                 <li role="separator" class="divider"></li>
                                 <li><a href="#">Discounts</a></li>
                             </ul>
@@ -26,26 +26,28 @@
                             <input type="text" placeholder="   Search for Item...">
                         </div>
                         <div class="search-button">
-                <a type="submit" role="button"><span class="glyphicon glyphicon-search"></span></a>
+                            <a type="submit" role="button"><span class="glyphicon glyphicon-search"></span></a>
                         </div>
                     </div>
                 </div>
                 <div class="my-account-block col-md-4">
                     <div class="my-account-wrap">
-                        <div class="basket">
-                        </div>
+                        {% if basketParams %}
+                        <a class="basket" href="/basket/" title="Count products: {{ basketParams.count }}, Amount: {{ basketParams.amount }}">
+                        </a>
+                        {% endif %}
                         <div class="btn-my-acc-wrap">
                             <button type="button" class="btn btn-my-acc dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account&nbsp;&nbsp;<span class="caret"></span></button>
                             <ul class="dropdown-menu dropdown-fix">
                                 {% if isLogin %}
-                                <li><a href="#">Profile</a></li>
-                                <li><a href="#">Orders</a></li>
+                                <li><a href="{{ public_url }}user/">Profile</a></li>
+                                <li><a href="{{ public_url }}order/">Order</a></li>
                                 <li><a href="#">Checkout</a></li>
                                 <li role="separator" class="divider"></li>
-                                <li><a href="#">Log Out</a></li>
+                                <li><a href="{{ public_url }}auth/logout">Log Out</a></li>
                                 {% else %}
-<li><a href="{{ public_url }}auth/login">Log In</a></li>
-<li><a href="{{ public_url }}auth/register">Register</a></li> {% endif %}
+                                <li><a href="{{ public_url }}auth/login">Log In</a></li>
+                                <li><a href="{{ public_url }}auth/register">Register</a></li> {% endif %}
                             </ul>
                         </div>
                     </div>
@@ -54,13 +56,13 @@
             <nav class="nav-second row">
                 <div class="col-md-7 col-md-offset-3">
                     <ul class="nav-btn">
-                        <li class="btn"><a href="#"><span>HOME</span></a></li>
-                        <li class="btn"><a href="#"><span>MAN</span></a></li>
-                        <li class="btn"><a href="/good/"><span>WOMEN</span></a></li>
-                        <li class="btn"><a href="#"><span>KIDS</span></a></li>
-                        <li class="btn"><a href="#"><span>ACCOSERIESE</span></a></li>
-                        <li class="btn"><a href="/user/"><span>FEATURED</span></a></li>
-                        <li class="btn"><a href="/order/"><span>HOT DEALS</span></a></li>
+                        <li class="btn"><a href="{{ public_url }}/"><span>HOME</span></a></li>
+                        <li class="btn"><a href="{{ public_url }}good/"><span>MAN</span></a></li>
+                        <li class="btn"><a href="{{ public_url }}good/"><span>WOMEN</span></a></li>
+                        <li class="btn"><a href="{{ public_url }}good/"><span>KIDS</span></a></li>
+                        <li class="btn"><a href="{{ public_url }}good/"><span>ACCOSERIESE</span></a></li>
+                        <li class="btn"><a href="{{ public_url }}good/"><span>FEATURED</span></a></li>
+                        <li class="btn"><a href="{{ public_url }}good/"><span>HOT DEALS</span></a></li>
                     </ul>
                 </div>
             </nav>

@@ -6,7 +6,7 @@
             <div class="header-inner">
                 <a class="navbar-brand center-block" href="/" title="Home">
                     <h1 class="hidden">
-<img src="{{ public_url }}img/brand1.png" alt="Logo">
+                        <img src="{{ public_url }}img/brand1.png" alt="Logo">
 
                     </h1>
                 </a>
@@ -20,16 +20,18 @@
                             Sign Up
                         </h3>
                     </div>
-                    <div class="panel-body hidden sendmessage">
+                    {% if message == 'success' %}
+                    <div class="panel-body sendmessage">
                         <div class="alert alert-success">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <h4>
                                 Successfully!
                             </h4>
-                            <p>Log in <a href="/login/">here</a></p>
+                            <p>Log in <a href="login">here</a></p>
                         </div>
                     </div>
-                    <div class="panel-body hidden errormessage">
+                    {% elseif message == 'error' %}
+                    <div class="panel-body errormessage">
                         <div class="alert alert-warning">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <h4>
@@ -38,6 +40,7 @@
                             <p>Please fill in all fields</p>
                         </div>
                     </div>
+                    {% else %}{% endif %}
                     <form class="register" accept-charset="UTF-8" role="form" method="post">
                         <fieldset>
                             <div class="form-group">
@@ -61,13 +64,13 @@
                             <div class="form-group">
                                 <div class="input-group input-group-lg">
                                     <span class="input-group-addon"><span class="fa fa-fw fa-lock"></span></span>
-                                    <input type="password" class="form-control" name="pass" placeholder="Password">
+                                    <input type="password" class="form-control" name="password" placeholder="Password">
                                 </div>
                             </div>
-<input class="btn btn-lg btn-pink btn-block" type="submit" value="Sign Me Up">
+                            <input class="btn btn-lg btn-pink btn-block" type="submit" value="Sign Me Up">
                         </fieldset>
                     </form>
-                    <p class="m-b-0 m-t">Already signed up? <a href="/login/">Login here</a>.</p>
+                    <p class="m-b-0 m-t">Already signed up? <a href="login">Login here</a>.</p>
                 </div>
             </div>
         </div>

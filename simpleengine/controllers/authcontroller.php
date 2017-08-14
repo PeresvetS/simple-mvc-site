@@ -15,14 +15,14 @@ class AuthController extends AbstractController
 
     public function actionLogin()
     {
-        $successLogin = true;
-        $isMaster = false; 
+        $loginMessage = 'success';
         
         if ($this->isPostReq()) {
+            $authModel = new AuthModel();
 
-            AuthModel::auth() ?
+            $authModel->auth() ?
             header("Location: /") :
-            $successLogin = false;
+            $loginMessage = 'error';
         }
 
 
@@ -32,7 +32,7 @@ class AuthController extends AbstractController
         else {
             echo $this->render("auth/login", [
                 "public_url" => "../",
-                "message" => $successLogin,
+                "message" => $loginMessage,
             ]);
         }
 
@@ -41,13 +41,14 @@ class AuthController extends AbstractController
 
     public function actionRegister()
     {
-        $registerMessage = null;
+        $registerMessage = '';
 
         if ($this->isPostReq()){
+            $authModel = new AuthModel();
 
-            AuthModel::register() ?
-            $message = 'success' :
-            $message = 'error';
+            $authModel->register() ?
+            $registerMessage = 'success' :
+            $registerMessage = 'error';
         }
 
 

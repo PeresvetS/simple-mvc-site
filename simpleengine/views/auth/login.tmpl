@@ -1,9 +1,9 @@
-{% extends "base.tmpl" %} {% block body %} 
+{% extends "base.tmpl" %} {% block body %}
 <div class="background-wrapper benches" data-stellar-background-ratio="0.8">
     <div class="content-login">
-<div class="header-logo">
+        <div class="header-logo">
             <div class="header-inner">
-                   <a class="navbar-brand center-block" href="/" title="Home">
+                <a class="navbar-brand center-block" href="/" title="Home">
                     <h1 class="hidden">
                         <img src="{{ public_url }}img/brand1.png" alt="Logo">
 
@@ -19,7 +19,8 @@
                             Login
                         </h3>
                     </div>
-                    <div class="panel-body hidden" id="#errormessage">
+                    {% if message == 'error' %}
+                    <div class="panel-body " id="#errormessage">
                         <div class="alert alert-danger">
                             <button type="button" class="close" data-dismiss="alert">×</button>
                             <h4>
@@ -28,6 +29,7 @@
                             <p class="red">Try again!</p>
                         </div>
                     </div>
+                    {% endif %}
                     <form accept-charset="UTF-8" class="login" role="form" method="post">
                         <fieldset>
                             <div class="form-group">
@@ -48,10 +50,10 @@
                     Remember Me
                   </label>
                             </div>
-<input class="btn btn-lg btn-pink btn-block" type="submit" value="Login">
+                            <input class="btn btn-lg btn-pink btn-block" type="submit" value="Login">
                         </fieldset>
                     </form>
-                    <p class="m-b-0 m-t">Not signed up? <a href="/register/">Sign up here</a>.</p>
+                    <p class="m-b-0 m-t">Not signed up? <a href="/auth/register">Sign up here</a>.</p>
 
                 </div>
             </div>

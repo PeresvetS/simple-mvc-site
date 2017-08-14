@@ -1,162 +1,35 @@
-{% extends "base.tmpl" %} {% block body %}
-{% include "layouts/header.tmpl" %}
+{% extends "base.tmpl" %} {% block body %} {% include "layouts/header.tmpl" %}
 
-    <div class="content">
-        <div class="top-strip-pink row">
-            <div class="col-md-5 top-strip-pink-header column">
-                <p>NEW ARRIVALS</p>
-            </div>
-            <div class="col-md-4 col-md-offset-3 column">
-                <ol class="breadcrumb breadcrumb-cl">
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">WOMEN</a></li>
-                    <li class="active pink-font">NEW ARRIVALS</li>
-                </ol>
-            </div>
-        </div>
-        <div id="carousel-example-generic" class="carousel slide carusel-style" data-ride="carousel">
-
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <div class="carusel-bg">
-<img src="{{ public_url }}img/ladyNewArrivals.png" alt="lady">
-                    </div>
-                    <div class="carousel-caption">
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="carusel-bg">
-<img src="{{ public_url }}img/ladyNewArrivals.png" alt="lady">
-                    </div>
-                    <div class="carousel-caption">
-                    </div>
-                </div>
-            </div>
-
-            <a class="carusel-btn-left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
-                <span class="fa fa-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carusel-btn-right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
-                <span class="fa fa-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
-        </div>
-        <div class="choice-block">
-            <div class="choce-block-wrapper">
-                <div class="head-choice-block">
-                    <p>WOMEN COLLECTION</p>
-                    <div class="hr"></div>
-                    <h4>Moschino Cheap And Chic</h4>
-                </div>
-                <div class="p-2"></div>
-                <div class="text-block">
-                    <p>Compellingly actualize fully researched processes before proactive outsourcing. Progressively syndicate collaborative architectures before cutting-edge services. Completely visualize parallel core competencies rather than exceptional
-                        portals.
-                    </p>
-                </div>
-                <div class="flex-center choce-block-properties">
-                    <p>MATERIAL:<strong>COTTON</strong></p>
-                    <p>DESIGNER:<strong>BINBURHAN</strong></p>
-                </div>
-                <div class="p-2"></div>
-                <div class="price-in-choice-block">
-                    <p>$561</p>
-                </div>
-                <div class="p-2"></div>
-                <hr>
-                <div class="choice-block-form">
-                    <div class="params row">
-                        <div class="col-xs-3">
-                            <label class="col-sm-2 control-label" for="first-drop">CHOOSE COLOR</label>
-                            <input type="text" class="form-control input-sm" id="first-drop" placeholder="Red">
-                        </div>
-                        <div class="col-xs-3">
-                            <label class="col-sm-2 control-label" for="first-drop">CHOOSE SIZE</label>
-                            <input type="text" class="form-control" id="first-drop" placeholder="XXL">
-                        </div>
-                        <div class="col-xs-3">
-                            <label class="col-sm-2 control-label" for="first-drop">QUANTITY</label>
-                            <input type="text" class="form-control" id="first-drop" placeholder="2">
-                        </div>
-                    </div>
-                    <div>
-                        <button class="btn choice-block-btn">
-                                <div class="basket pink">
-                                </div>
-                                <p>Add to Cart</p>
-                            </button>
-                    </div>
-                </div>
-            </div>
-        </div>
+<div class="content">
+    <main>
         <div class="h-gallery-wrapper">
             <div class="h-gallery">
-                <div class="col-md-8 col-md-offset-2">
-                    <p>YOU MAY LIKE ALSO</p>
+                <div class="col-md-3 col-md-offset-4 text-center">
+                    <h2> Men's goods</h2>
+                    <h4>for all people</h4>
+                </div>
+            </div>
+            <div class="p-3"></div>
+            <div class="gallery">
+                <div class="row gallery-row">
+                    {% for good in goods %}
+                    <a href="{{ public_url }}good/item/?id={{ good.id }}">
+                        <div class="col-md-3 col-sm-6 {{ good.type }}">
+                            <div class="thumbnail card">
+                                <div class="img-shadow">
+                                    <img src="{{ public_url }}{{ good.img }}" alt="t-shirt">
+                                </div>
+                                <div class="caption">
+                                    <p>{{ good.name }}</p>
+                                    <p>${{ good.price }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-        <div class="p-3"></div>
-        <div class="gallery container-style">
-            <div class="row gallery-row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="thumbnail card">
-                        <div class="box-shadow"></div>
-                        <div class="sub-page-card-background img-shadow">
-<img src="{{ public_url }}img/lady1.png" alt="lady">
-                        </div>
-                        <div class="caption">
-                            <p class="sub-page-card-font">BLAZE LEGGINGS</p>
-                            <p>$52.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="thumbnail card">
-                        <div class="box-shadow"></div>
-                        <div class="sub-page-card-background img-shadow">
-<img src="{{ public_url }}img/lady2.png" alt="lady" class="fix-card-img">
-                        </div>
-                        <div class="caption">
-                            <p class="sub-page-card-font">ALEXA SWEATER</p>
-                            <p>$52.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="thumbnail card">
-                        <div class="box-shadow"></div>
-                        <div class="sub-page-card-background img-shadow">
-<img src="{{ public_url }}img/lady3.png" alt="lady">
-                        </div>
-                        <div class="caption">
-                            <p class="sub-page-card-font">AGNES TOP</p>
-                            <p>$52.00</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                    <div class="thumbnail card">
-                        <div class="box-shadow"></div>
-                        <div class="sub-page-card-background img-shadow">
-<img src="{{ public_url }}img/lady4.png" alt="lady">
-                        </div>
-                        <div class="caption">
-                            <p class="sub-page-card-font">SYLVA SWEATER</p>
-                            <p>$52.00</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="p-2"></div>
-        <div class="bottom-image row">
- {% include "layouts/footer.tmpl" %}
-            {% endblock %}
+    </main>
+</div>
+{% include "layouts/footer.tmpl" %} {% endblock %}

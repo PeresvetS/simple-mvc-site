@@ -13,7 +13,7 @@ class File
      * uploadFile
      * @return mixed 
      */
-    public function uploadFile() : mixed
+    public function uploadFile()
     {
         if (
         !isset($_FILES['img']['error']) ||
@@ -33,10 +33,7 @@ class File
     }
     
 
-    /**
-     * deleteFile
-     * @param string $localPath
-     */
+    
     public function deleteFile(string $localPath) : bool
     {
         return unlink($localPath);

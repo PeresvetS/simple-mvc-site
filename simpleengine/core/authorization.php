@@ -7,6 +7,7 @@ use \simpleengine\core\Application;
 class Authorization 
 {
 
+    const SALT = "awOIHO@EN@Oine/q2enq2kbkb";
 
     public static function checkAuthWithCookie() : bool
     {
@@ -47,15 +48,15 @@ class Authorization
 
     public function hashPassword(string $password) : string
     {
-    $salt = md5(uniqid(SALT2, true));
-    $salt = substr(strtr(base64_encode($salt), '+', '.'), 0, 22);
-    return crypt($password, '$2a$08$' . $salt);
+    $salt = md5(uniqid(self::SALT, true));
+    $saltStrong = substr(strtr(base64_encode($salt), '+', '.'), 0, 22);
+    return crypt($password, '$2a$08$' . $saltStrong);
     }
 
 
 
     public function checkPassword(string $password, string $hash) : bool
-    {
+    {   
         return crypt($password, $hash) === $hash;
     }
 

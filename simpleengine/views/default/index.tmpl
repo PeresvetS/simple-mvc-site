@@ -1,204 +1,125 @@
-{% extends "base.tmpl" %} {% block body %}
-{% include "layouts/header.tmpl" %}
+{% extends "base.tmpl" %} {% block body %} {% include "layouts/header.tmpl" %}
 
-    <div class="content">
-        <div class="top-image">
-            <div class="top-image-text">
-<img src="{{ public_url }}img/pink-figure-top.jpg" alt="pink-figure-top">
-<img src="{{ public_url }}img/top-img-text.png" alt="top-image-text">
+<div class="content">
+    <div class="top-image">
+        <div class="top-image-text">
+            <img src="{{ public_url }}img/pink-figure-top.jpg" alt="pink-figure-top">
+            <img src="{{ public_url }}img/top-img-text.png" alt="top-image-text">
+        </div>
+    </div>
+    <main>
+        <div class="category row">
+            <div class="col-md-6 photo-block">
+                <div class="white-block">
+                    <img src="img/offer-men.png" alt="offer-for-men">
+                </div>
+                <a href="{{ public_url }}good/">
+                    <div class="for-men view-good">
+                        <img src="{{ public_url }}img/for-men.jpg" alt="for-men">
+                    </div>
+                </a>
+                <div class="white-block white-block-lg">
+                    <img src="{{ public_url }}img/offer-acces.png" alt="offer-accoseriese">
+                </div>
+                <a href="{{ public_url }}good/">
+                    <div class="accoseriese view-good">
+                        <img src="{{ public_url }}img/acces.jpg" alt="accoseriese">
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6 photo-block">
+                <div class="white-block">
+                    <img src="{{ public_url }}img/offer-women.png" alt="offer-for-women">
+                </div>
+                <a href="{{ public_url }}good/">
+                    <div class="for-women view-good">
+                        <img src="{{ public_url }}img/for-woman.jpg" alt="for-women">
+                    </div>
+                </a>
+                <div class="white-block">
+                    <img src="{{ public_url }}img/offer-kids.png" alt="offer-for-kids">
+                </div>
+                <a href="{{ public_url }}good/">
+                    <div class="for-kids view-good">
+                        <img src="{{ public_url }}img/child.jpg" alt="for-kids">
+                    </div>
+                </a>
             </div>
         </div>
-        <main>
-            <div class="category row">
-                <div class="col-md-6 photo-block">
-                    <div class="white-block">
-                        <img src="img/offer-men.png" alt="offer-for-men">
-                    </div>
-                    <div class="for-men">
-<img src="{{ public_url }}img/for-men.jpg" alt="for-men">
-                    </div>
-                    <div class="white-block white-block-lg">
-<img src="{{ public_url }}img/offer-acces.png" alt="offer-accoseriese">
-                    </div>
-                    <div class="accoseriese">
-<img src="{{ public_url }}img/acces.jpg" alt="accoseriese">
-                    </div>
+        <div class="h-gallery-wrapper">
+            <div class="h-gallery">
+                <div class="col-md-2 col-md-offset-5">
+                    <img src="img/fetured-items.png" alt="fetured-items">
                 </div>
-                <div class="col-md-6 photo-block">
-                    <div class="white-block">
-<img src="{{ public_url }}img/offer-women.png" alt="offer-for-women">
-                    </div>
-                    <div class="for-women">
-<img src="{{ public_url }}img/for-woman.jpg" alt="for-women">
-                    </div>
-                    <div class="white-block">
-<img src="{{ public_url }}img/offer-kids.png" alt="offer-for-kids">
-                    </div>
-                    <div class="for-kids">
-<img src="{{ public_url }}img/child.jpg" alt="for-kids">
-                    </div>
+                <div class="col-md-5 col-md-offset-4">
+                    <img src="img/fetured-small.png" alt="small-text">
                 </div>
             </div>
-            <div class="h-gallery-wrapper">
-                <div class="h-gallery">
-                    <div class="col-md-2 col-md-offset-5">
-                        <img src="img/fetured-items.png" alt="fetured-items">
+        </div>
+        <div class="p-3"></div>
+        <div class="gallery">
+            <div class="row gallery-row">
+                {% for good in goods %}
+                <a href="{{ public_url }}good/item/?id={{ good.id }}">
+                    <div class="col-md-3 col-sm-6 {{ good.type }}">
+                        <div class="thumbnail card">
+                            <div class="img-shadow">
+                                <img src="{{ public_url }}{{ good.img }}" alt="t-shirt">
+                            </div>
+                            <div class="caption">
+                                <p>{{ good.name }}</p>
+                                <p>${{ good.price }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="col-md-5 col-md-offset-4">
-                        <img src="img/fetured-small.png" alt="small-text">
-                    </div>
-                </div>
+                </a>
+                {% endfor %}
             </div>
-            <div class="p-3"></div>
-            <div class="gallery">
-                <div class="row gallery-row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="thumbnail card">
-                            <div class="box-shadow"></div>
-                            <div class="img-shadow">
-<img src="{{ public_url }}img/1-t-shirt.jpg" alt="t-shirt">
-                            </div>
-                            <div class="caption">
-                                <p>MANGO PEOPLE T-SHIRT</p>
-                                <p>$52.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="thumbnail card">
-                            <div class="box-shadow"></div>
-                            <div class="img-shadow">
-<img src="{{ public_url }}img/2-t-shirt.jpg" alt="t-shirt">
-                            </div>
-                            <div class="caption">
-                                <p>MANGO PEOPLE T-SHIRT</p>
-                                <p>$52.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="thumbnail card">
-                            <div class="box-shadow"></div>
-                            <div class="img-shadow">
-<img src="{{ public_url }}img/3-t-shirt.jpg" alt="t-shirt">
-                            </div>
-                            <div class="caption">
-                                <p>MANGO PEOPLE T-SHIRT</p>
-                                <p>$52.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="thumbnail card">
-                            <div class="box-shadow"></div>
-                            <div class="img-shadow">
-<img src="{{ public_url }}img/4-t-shirt.jpg" alt="t-shirt">
-                            </div>
-                            <div class="caption">
-                                <p>MANGO PEOPLE T-SHIRT</p>
-                                <p>$52.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row gallery-row">
-                    <div class="col-md-3 col-sm-6">
-                        <div class="thumbnail card">
-                            <div class="box-shadow"></div>
-<div class="{{ public_url }}img-shadow">
-<img src="{{ public_url }}img/5-t-shirt.jpg" alt="t-shirt">
-                            </div>
-                            <div class="caption">
-                                <p>MANGO PEOPLE T-SHIRT</p>
-                                <p>$52.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="thumbnail card">
-                            <div class="box-shadow"></div>
-<div class="{{ public_url }}img-shadow">
-<img src="{{ public_url }}img/6-t-shirt.jpg" alt="t-shirt">
-                            </div>
-                            <div class="caption">
-                                <p>MANGO PEOPLE T-SHIRT</p>
-                                <p>$52.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="thumbnail card">
-                            <div class="box-shadow"></div>
-                            <div class="img-shadow">
-<img src="{{ public_url }}img/7-t-shirt.jpg" alt="t-shirt">
-                            </div>
-                            <div class="caption">
-                                <p>MANGO PEOPLE T-SHIRT</p>
-                                <p>$52.00</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6">
-                        <div class="thumbnail card">
-                            <div class="box-shadow"></div>
-                            <div class="{{ public_url }}img-shadow">
-<img src="{{ public_url }}img/8-t-shirt.jpg" alt="t-shirt">
-                            </div>
-                            <div class="caption">
-                                <p>MANGO PEOPLE T-SHIRT</p>
-                                <p>$52.00</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="p-4"></div>
-            <div class="browse-div-btn">
-                <button class="btn btn-browse" href='#'>
+        </div>
+        <div class="p-4"></div>
+        <div class="browse-div-btn">
+            <a class="btn btn-browse" href='{{ public_url }}good/'>
                   Browse All Product&nbsp;&nbsp;
                   <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                </button>
-            </div>
-            <div class="p-5"></div>
-            <div class="offer-block row">
-                <div class="wallpapper-banner col-md-8">
-                    <div class="offer-banner">
-                        <img src="img/offerForWomen.png" alt="banner-offer">
-                    </div>
-                    <img src="img/offer-img.jpg" alt="offer">
-                </div>
-                <div class="column col-md-4">
-                    <div class="">
-                        <div class="col-md-3">
-<img src="{{ public_url }}img/freeDeliver.png" alt="deliver">
-                        </div>
-                        <div class="col-md-9 mini-discr">
-                            <p>Free Delivery</p>
-                            <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
-                        </div>
-                    </div>
-                    <div class="">
-                        <div class="col-md-3">
-<img src="{{ public_url }}img/discount.png" alt="discount">
-                        </div>
-                        <div class="col-md-9 mini-discr">
-                            <p>Sales & discounts</p>
-                            <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
-                        </div>
-                    </div>
-                    <div class="">
-                        <div class="col-md-3">
-<img src="{{ public_url }}img/crown.png" alt="crown">
-                        </div>
-                        <div class="col-md-9 mini-discr">
-                            <p>Quality assurance</p>
-                            <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
+                </a>
+        </div>
         <div class="p-5"></div>
-        <div class="bottom-image row">
-        {% include "layouts/footer.tmpl" %}
-        {% endblock %}
+        <div class="offer-block row">
+            <div class="wallpapper-banner col-md-8">
+                <div class="offer-banner">
+                    <img src="img/offerForWomen.png" alt="banner-offer">
+                </div>
+                <img src="img/offer-img.jpg" alt="offer">
+            </div>
+            <div class="column col-md-4">
+                <div class="">
+                    <div class="col-md-3">
+                        <img src="{{ public_url }}img/freeDeliver.png" alt="deliver">
+                    </div>
+                    <div class="col-md-9 mini-discr">
+                        <p>Free Delivery</p>
+                        <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="col-md-3">
+                        <img src="{{ public_url }}img/discount.png" alt="discount">
+                    </div>
+                    <div class="col-md-9 mini-discr">
+                        <p>Sales & discounts</p>
+                        <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="col-md-3">
+                        <img src="{{ public_url }}img/crown.png" alt="crown">
+                    </div>
+                    <div class="col-md-9 mini-discr">
+                        <p>Quality assurance</p>
+                        <p>Worldwide delivery on all. Authorit tively morph next-generation innov tion with extensive models.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    {% include "layouts/footer.tmpl" %} {% endblock %}

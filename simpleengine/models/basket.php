@@ -16,23 +16,23 @@ class Basket extends CommonModel implements DbModelInterface
     
 
     
-    public function __construct(number $idUser)
+    public function __construct(int $idUser)
     {
         parent::__construct();
         $this->$idUser = $idUser;
-        $this->find($this->idUser);
-        $this-prepareBasketBlock($this->idUser);
+        $this->find($idUser);
+        $this->prepareBasketBlock($idUser);
     }
 
 
 
     
-    public function find(number $id_user)
+    public function find(int $idUser)
     {
         $sql = "SELECT b.*, g.good_name, g.good_price, g.good_type
                 FROM `basket` b
                 LEFT JOIN `goods` g USING(`id_good`)
-                WHERE b.id_user = $id_user
+                WHERE b.id_user = $idUser
                 AND b.is_in_order = 0";
         $result = $this->db->getAssocResult($sql);
 
@@ -65,19 +65,25 @@ class Basket extends CommonModel implements DbModelInterface
 
 
         
-    public function prepareBasketBlock(number $idUser)
+    public function prepareBasketBlock(int $idUser)
     {
-        $sql = "SELECT COUNT(id_basket) AS `goods`, SUM(price) as `amount`
+        $sql = "SELECT COUNT(`id_basket`) AS `goods`, SUM(`price`) as `amount`
                                         FROM `basket`
                                         WHERE `id_user` = $idUser 
                                         AND `is_in_order` = 0";
 
         $basketData = $this->db->getRowResult($sql);
 
-        if(isset($basketData['goods'])){
-           $this->$commonParams['goods'] = $basketData['goods'];
-           $this->$commonParams['amount'] = $basketData['amount'];
-           $_SESSION['amount'] = $basketData['amount']
+        $goodsCount = (int)$basketData['goods'];
+        $amount = $basketData['amount'];
+
+        if ($goodsCount > 0) {
+           $this->$commonParams['goods'] = $goodsCount;
+           $this->$commonParams['amount'] = $amount;
+           $_SESSION['amount'] = $amount;
+        } 
+        else {
+        $_SESSION['amount'] = 0;
         }
     }
 
@@ -103,7 +109,7 @@ class Basket extends CommonModel implements DbModelInterface
 
 
     
-    public function doAction(sting $action = "")
+    public function doAction(sting $action)
     {
         switch($action) {
             case "add_good":
@@ -127,11 +133,12 @@ class Basket extends CommonModel implements DbModelInterface
 
         $sql = "SELECT `good_price` FROM `goods` WHERE `id_good` = $idGood";
         $priceData = $this->db->getRowResult($sql);
+        $price = $priceData['good_price'];
 
         if($quantity > 0 && $priceData['good_price'] > 0) {
             for($i = 0; $i < $quantity; $i++) {
                 $sql = "INSERT INTO `basket` (`id_user`, `id_good`, `price`, `is_in_order`) 
-                VALUES($this->$idUser, $idGood, $price_data['good_price'], 0)";
+                VALUES($this->$idUser, $idGood, $price, 0)";
                 $this->db()->executeQuery($sql);
             }
         }
