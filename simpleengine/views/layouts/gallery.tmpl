@@ -9,14 +9,14 @@
                 <div class="caption">
                     <p>{{ good.name }}</p>
                     <p>${{ good.price }}</p>
-                    <form action="{{ public_url }}/basket">
-                        <input type="hidden" name="qty" value="1">
+                    <form class="addToBasket {{ canBuy }}" accept-charset="UTF-8" role="form" method="post">
+                        <input type="hidden" name="quantity" value="1">
                         <input type="hidden" name="action" value="add_good">
-                        <input type="hidden" name="id" value="{{ good.id }}">
-                        <a type="submit" role="button" class="pink">
-                            <span class="glyphicon glyphicon-plus add-good-sign" data-toggle="tooltip" data-placement="right" title="add to basket">
+                        <input type="hidden" name="id_good" value="{{ good.id }}">
+                        <button type="submit" role="button" class="pink btn-submit">
+                        <span class="glyphicon glyphicon-plus add-good-sign" data-toggle="tooltip" data-placement="right" title="add to basket">
                             </span>
-                        </a>
+                        </button>
                     </form>
                 </div>
             </div>

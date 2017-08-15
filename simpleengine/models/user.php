@@ -5,13 +5,13 @@ namespace simpleengine\models;
 
 use simpleengine\core\Application;
 
-class User implements DbModelInterface
+class User extends CommonModel implements DbModelInterface
 {
     private $id;
     private $userName;
     private $email;
 
-    public function __construct(int $id = null){
+    public function __construct(int $id = null) {
         parent::__construct();
         $this->find($id);
     }
@@ -20,7 +20,7 @@ class User implements DbModelInterface
 
     public function find(int $id)
     {
-        $sql = "SELECT * FROM users WHERE id = ".(int)$id;
+        $sql = "SELECT * FROM user WHERE id_user = ".(int)$id;
         $result = $this->db->getRowResult($sql);
 
         if(isset($result)){

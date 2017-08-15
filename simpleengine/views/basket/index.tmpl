@@ -1,0 +1,40 @@
+{% extends "base.tmpl" %} {% block body %} {% include "layouts/header.tmpl" %}
+
+<div>
+    <main>
+
+
+        <div class="col-md-8 col-md-offset-2 h-gallery-wrapper">
+            <h3 class="text-center">Current products</h3>
+            <br>
+        </div>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>Product name</th>
+                    <th>Price</th>
+                    <th>Current Price</th>
+                    <th>Count</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% include "basket/item.tmpl" %}
+                <tr>
+                    <th>Total</th>
+                    <th>${{ amount }}</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </tbody>
+        </table>
+        <form class="clearItem" accept-charset="UTF-8" role="form" method="post">
+            <input type="hidden" name="action" value="remove_all">
+            <button type="submit" class="submit btn btn-reset btn-lg"><i class="fa fa-minus-square-o"></i> Remove all</button></form>
+        <a class="btn btn-pink btn-lg" href="/order/"><i class="fa fa-check-circle-o"></i> To order</a>
+    </main>
+</div>
+
+{% include "layouts/footer.tmpl" %} {% endblock %}

@@ -19,7 +19,8 @@ class BasketController extends AbstractController
                 "public_url" => "../",
                 "isLogin" => $this->isLogin(),
                 "isMaster" => $this->isMaster(),
-                "basketGoods" => $basketGoods,
+                "amount" => $_SESSION['amount'],
+                "goods" => $basketGoods,
                 "basketParams" => $commonParams
             ]);
         }

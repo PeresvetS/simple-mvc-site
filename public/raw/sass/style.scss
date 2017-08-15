@@ -147,6 +147,35 @@ main {
     }
 }
 
+.btn-reset {
+    background-color: $middle-grey;
+    border-radius: 0px;
+    color: $white-cl;
+    font-size: 15px;
+    &:hover {
+        background-color: $dark-grey !important;
+        color: $white-cl;
+        font-weight: 700;
+    }
+}
+
+.btn-master {
+    @extend .btn-reset;
+    align-self: flex-end;
+    margin-right: 20px;
+    &:hover {
+        font-weight: initial;
+    }
+}
+
+.btn-submit {
+    background-color: initial;
+    border: initial;
+    &:hover {
+        background-color: $light-grey !important;
+    }
+}
+
 .border-nav {
     border: $nav-border;
     box-shadow: $nav-shadow;
@@ -317,6 +346,11 @@ main {
         line-height: 24px;
         text-align: center;
     }
+}
+
+.clearItem {
+    display: inline-block;
+    margin-top: 40px;
 }
 
 .close {
@@ -614,6 +648,11 @@ main {
             text-align: left;
         }
     }
+}
+
+.my-account-wrap {
+    display: flex;
+    flex-direction: row;
 }
 
 .nav-btn {

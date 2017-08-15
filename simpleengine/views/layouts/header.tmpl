@@ -34,9 +34,12 @@
                 </div>
                 <div class="my-account-block col-md-4">
                     <div class="my-account-wrap">
-                        {% if basketParams %}
-                        <a class="basket" href="/basket/" title="Count products: {{ basketParams.count }}, Amount: {{ basketParams.amount }}">
-                        </a>
+                        {% if isMaster %}
+                        <a href="/master/" class="btn btn-master">Master panel</a> {% endif %} {% if basketParams %}
+                        <div id="basket">
+                            <a class="basket" href="/basket/" title="Count products: {{ basketParams.count }}, Amount: {{ basketParams.amount }}">
+                            </a>
+                        </div>
                         {% endif %}
                         <div class="btn-my-acc-wrap">
                             <button type="button" class="btn btn-my-acc dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account&nbsp;&nbsp;<span class="caret"></span></button>
@@ -49,7 +52,8 @@
                                 <li><a href="{{ public_url }}auth/logout">Log Out</a></li>
                                 {% else %}
                                 <li><a href="{{ public_url }}auth/login">Log In</a></li>
-                                <li><a href="{{ public_url }}auth/register">Register</a></li> {% endif %}
+                                <li><a href="{{ public_url }}auth/register">Register</a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>

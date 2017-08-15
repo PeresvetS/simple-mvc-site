@@ -8,7 +8,7 @@ use simpleengine\core\Application;
 class Basket extends CommonModel implements DbModelInterface
 {
     private $productsArray = [];
-    private $idUser;
+    protected $idUser;
     private $commonParams = [
         "count" => 0,
         "amount" => 0
@@ -19,7 +19,7 @@ class Basket extends CommonModel implements DbModelInterface
     public function __construct(int $idUser)
     {
         parent::__construct();
-        $this->$idUser = $idUser;
+        $this->idUser = $idUser;
         $this->find($idUser);
         $this->prepareBasketBlock($idUser);
     }
@@ -32,18 +32,16 @@ class Basket extends CommonModel implements DbModelInterface
         $sql = "SELECT b.*, g.good_name, g.good_price, g.good_type
                 FROM `basket` b
                 LEFT JOIN `goods` g USING(`id_good`)
-                WHERE b.id_user = $idUser
-                AND b.is_in_order = 0";
+                WHERE b.id_user = $idUser";
         $result = $this->db->getAssocResult($sql);
 
         if (!empty($result)) {
             foreach ($result as $item) {
                 $this->productsArray[] = [
-                    "id_basket" => $item["id"],
-                    "id_product" => $item["id_good"],
-                    "product_price" => $item["good_price"],
-                    "product_name" => $item["good_name"],
-                    "good_type" => $item["good_type"]
+                    "id_good" => $item["id_good"],
+                    "price" => $item["good_price"],
+                    "name" => $item["good_name"],
+                    "type" => $item["good_type"]
                 ];
             }
         }
@@ -54,7 +52,7 @@ class Basket extends CommonModel implements DbModelInterface
     
     public function delete() : bool
     {
-        $sql = "DELETE FROM `basket` WHERE `id_user` = $this->$idUser";
+        $sql = "DELETE FROM `basket` WHERE `id_user` = $this->idUser";
         return $this->db->executeQuery($sql);
     }
 
@@ -69,25 +67,22 @@ class Basket extends CommonModel implements DbModelInterface
     {
         $sql = "SELECT COUNT(`id_basket`) AS `goods`, SUM(`price`) as `amount`
                                         FROM `basket`
-                                        WHERE `id_user` = $idUser 
-                                        AND `is_in_order` = 0";
+                                        WHERE `id_user` = $idUser";
 
         $basketData = $this->db->getRowResult($sql);
 
-        $goodsCount = (int)$basketData['goods'];
+        $goodsCount = $basketData['goods'];
         $amount = $basketData['amount'];
 
         if ($goodsCount > 0) {
-           $this->$commonParams['goods'] = $goodsCount;
-           $this->$commonParams['amount'] = $amount;
+           $this->commonParams['count'] = $goodsCount;
+           $this->commonParams['amount'] = $amount;
            $_SESSION['amount'] = $amount;
         } 
         else {
         $_SESSION['amount'] = 0;
         }
     }
-
-
 
 
     
@@ -109,7 +104,7 @@ class Basket extends CommonModel implements DbModelInterface
 
 
     
-    public function doAction(sting $action)
+    public function doAction(string $action)
     {
         switch($action) {
             case "add_good":
@@ -117,6 +112,9 @@ class Basket extends CommonModel implements DbModelInterface
                 break;
             case "remove_good":
                 $this->removeGoodFromBasket();
+                break;
+            case "remove_all":
+                $this->delete();
                 break;
             default:
                 break;
@@ -134,12 +132,11 @@ class Basket extends CommonModel implements DbModelInterface
         $sql = "SELECT `good_price` FROM `goods` WHERE `id_good` = $idGood";
         $priceData = $this->db->getRowResult($sql);
         $price = $priceData['good_price'];
-
         if($quantity > 0 && $priceData['good_price'] > 0) {
             for($i = 0; $i < $quantity; $i++) {
-                $sql = "INSERT INTO `basket` (`id_user`, `id_good`, `price`, `is_in_order`) 
-                VALUES($this->$idUser, $idGood, $price, 0)";
-                $this->db()->executeQuery($sql);
+                $sql = "INSERT INTO `basket` (`id_user`, `id_good`, `price`) 
+                VALUES($this->idUser, $idGood, $price)";
+                $this->db->executeQuery($sql);
             }
         }
     }
@@ -150,13 +147,14 @@ class Basket extends CommonModel implements DbModelInterface
     {
         $idGood = $this->secure->getSecureQuery($_POST['id_good'], 120);
         $quantity = $this->secure->getSecureQuery($_POST['quantity'], 11);
-        $sql = "SELECT `good_price` FROM `goods` WHERE `id_good` = $id_good";
+
+        $sql = "SELECT `good_price` FROM `goods` WHERE `id_good` = $idGood";
         $priceData = $this->db->getRowResult($sql);
 
-        if($quantity > 0 && $price_data['good_price'] > 0) {
+        if($quantity > 0 && $priceData['good_price'] > 0) {
             for($i = 0; $i < $quantity; $i++){
                 $sql = "DELETE FROM `basket` WHERE `id_good` = $idGood 
-                        AND `id_user` = $this->$idUser LIMIT 1";
+                        AND `id_user` = $this->idUser LIMIT 1";
                 $this->db->executeQuery($sql);
             }
         }
