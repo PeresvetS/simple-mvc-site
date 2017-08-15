@@ -1,1 +1,1 @@
-$(function(){$(document).tooltip()});
+$(function(){$(".basket").tooltip()});

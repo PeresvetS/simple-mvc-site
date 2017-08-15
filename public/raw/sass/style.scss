@@ -35,16 +35,32 @@ main {
     width: 65.6%;
 }
 
+.a-hidden {
+    text-decoration: none !important;
+}
+
+.add-good-sign {
+    font-size: 18px;
+}
+
 .basket {
     @extend .left;
     background: $backet-ico;
     height: 29px;
-    margin-left: 3%;
+    margin-left: 5px;
     margin-top: 40px;
     width: 32px;
     &:hover {
         color: $black-full;
     }
+}
+
+.basket-btn {
+    @extend .right;
+    background: $backet-ico;
+    height: 29px;
+    margin-left: 5px;
+    width: 32px;
 }
 
 .background-wrapper {
@@ -93,7 +109,18 @@ main {
     @extend .btn-pink;
     font-weight: 700;
     height: 48px;
+    padding-top: 12px;
     width: 212px;
+}
+
+.btn-choice-block {
+    margin: auto;
+    width: 150px;
+}
+
+.btn-item-block {
+    display: flex;
+    margin-top: 50px;
 }
 
 .btn-my-acc {
@@ -255,7 +282,7 @@ main {
     border-width: 1px;
     border-color: $choice-item-border-cl;
     box-sizing: border-box;
-    height: 730px;
+    height: 630px;
     margin: auto;
     margin-top: -86px;
     position: relative;
@@ -378,7 +405,7 @@ main {
 
 .h-gallery-wrapper {
     height: 13%;
-    padding-top: 9%;
+    padding-top: 120px;
 }
 
 .head-choice-block {
@@ -617,6 +644,7 @@ main {
 
 .nav-second {
     @extend .white-bg;
+    border: $nav-border;
     padding-top: 0.5%;
     div {
         height: $full;
@@ -694,6 +722,10 @@ main {
 .photo-block {
     overflow: hidden;
     position: inherit;
+}
+
+.pink {
+    color: $pink;
 }
 
 .right {

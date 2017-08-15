@@ -58,30 +58,13 @@
         </div>
         <div class="p-3"></div>
         <div class="gallery">
-            <div class="row gallery-row">
-                {% for good in goods %}
-                <a href="{{ public_url }}good/item/?id={{ good.id }}">
-                    <div class="col-md-3 col-sm-6 {{ good.type }}">
-                        <div class="thumbnail card">
-                            <div class="img-shadow">
-                                <img src="{{ public_url }}{{ good.img }}" alt="t-shirt">
-                            </div>
-                            <div class="caption">
-                                <p>{{ good.name }}</p>
-                                <p>${{ good.price }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </a>
-                {% endfor %}
-            </div>
+            {% include "layouts/gallery.tmpl" %}
         </div>
         <div class="p-4"></div>
         <div class="browse-div-btn">
             <a class="btn btn-browse" href='{{ public_url }}good/'>
-                  Browse All Product&nbsp;&nbsp;
-                  <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-                </a>
+                <p>Browse All Product</p>
+            </a>
         </div>
         <div class="p-5"></div>
         <div class="offer-block row">

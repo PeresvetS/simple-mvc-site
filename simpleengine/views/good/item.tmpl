@@ -8,8 +8,8 @@
         <div class="col-md-4 col-md-offset-3 column">
             <ol class="breadcrumb breadcrumb-cl">
                 <li><a href="{{ public_url }}/">HOME</a></li>
-                <li><a href="{{ public_url }}/goods/">WOMEN</a></li>
-                <li class="active pink-font">NEW ARRIVALS</li>
+                <li><a href="{{ public_url }}/good/">WOMEN</a></li>
+                <li class="active pink-font">{{ good.name|upper }}</li>
             </ol>
         </div>
     </div>
@@ -50,7 +50,7 @@
     <div class="choice-block">
         <div class="choce-block-wrapper">
             <div class="head-choice-block">
-                <p>{{ good.type }} Collection</p>
+                <p>{{ good.type|upper }} COLLECTION</p>
                 <div class="hr"></div>
                 <h4>{{ good.name }}</h4>
             </div>
@@ -60,35 +60,43 @@
                 </p>
             </div>
             <div class="flex-center choce-block-properties">
-                <p>MATERIAL:<strong> COTTON</strong></p>
-                <p>DESIGNER:<strong> BINBURHAN</strong></p>
+                <p>MATERIAL:<strong>&nbsp; COTTON&nbsp;&nbsp;  </strong></p>
+                <p>DESIGNER:<strong>&nbsp; BINBURHAN  </strong></p>
             </div>
             <div class="p-2"></div>
             <div class="price-in-choice-block">
-                <p>${{ good.price }}</p>
+                <p>Price: ${{ good.price }}</p>
             </div>
-            <div class="p-2"></div>
+            <div class="p-1"></div>
             <hr>
             <div class="choice-block-form">
                 <div class="params row">
-                    <div class="col-xs-3">
-                        <label class="col-sm-2 control-label" for="first-drop">CHOOSE COLOR</label>
-                        <input type="text" class="form-control input-sm" id="first-drop" placeholder="Red">
+                    <div class="col-md-4 text-center">
+                        <label class="control-label" for="first-drop">CHOOSE COLOR</label>
+                        <select class="form-control" id="first-drop">                           
+                            <option selected value="green">Green</option>
+                            <option value="red">Red</option>
+                            <option value="blue">Blue</option>
+                            <option value="yellow">Yellow</option>
+                        </select>
                     </div>
-                    <div class="col-xs-3">
-                        <label class="col-sm-2 control-label" for="first-drop">CHOOSE SIZE</label>
-                        <input type="text" class="form-control" id="first-drop" placeholder="XXL">
+                    <div class="col-md-4 text-center">
+                        <label class="control-label" for="second-drop">CHOOSE SIZE</label>
+                        <select class="form-control" id="second-drop">
+                            <option selected value="S">S</option>
+                            <option value="L">L</option>
+                            <option value="M">M</option>
+                            <option value="XL">XL</option>
+                        </select>
                     </div>
-                    <div class="col-xs-3">
-                        <label class="col-sm-2 control-label" for="first-drop">QUANTITY</label>
-                        <input type="text" class="form-control" id="first-drop" placeholder="2">
+                    <div class="col-md-4 text-center">
+                        <label class="control-label" for="third-drop">QUANTITY</label>
+                        <input type="number" class="form-control" id="third-drop" step="1" placeholder="1">
                     </div>
                 </div>
-                <div>
-                    <button class="btn choice-block-btn">
-                                <div class="basket pink">
-                                </div>
-                                <p>Add to Cart</p>
+                <div class="btn-item-block">
+                    <button class="btn btn-choice-block btn-pink">
+                                Add to Cart
                             </button>
                 </div>
             </div>
@@ -103,22 +111,6 @@
     </div>
     <div class="p-3"></div>
     <div class="gallery container-style">
-        <div class="row gallery-row">
-            {% for good in goods %}
-            <a href="{{ public_url }}good/item/?id={{ good.id }}">
-                <div class="col-md-3 col-sm-6 {{ good.type }}">
-                    <div class="thumbnail card">
-                        <div class="img-shadow">
-                            <img src="{{ public_url }}{{ good.img }}" alt="t-shirt">
-                        </div>
-                        <div class="caption">
-                            <p>{{ good.name }}</p>
-                            <p>${{ good.price }}</p>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            {% endfor %}
-        </div>
+        {% include "layouts/gallery.tmpl" %}
     </div>
     {% include "layouts/footer.tmpl" %} {% endblock %}

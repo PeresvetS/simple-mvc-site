@@ -11,23 +11,7 @@
             </div>
             <div class="p-3"></div>
             <div class="gallery">
-                <div class="row gallery-row">
-                    {% for good in goods %}
-                    <a href="{{ public_url }}good/item/?id={{ good.id }}">
-                        <div class="col-md-3 col-sm-6 {{ good.type }}">
-                            <div class="thumbnail card">
-                                <div class="img-shadow">
-                                    <img src="{{ public_url }}{{ good.img }}" alt="t-shirt">
-                                </div>
-                                <div class="caption">
-                                    <p>{{ good.name }}</p>
-                                    <p>${{ good.price }}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    {% endfor %}
-                </div>
+                {% include "layouts/gallery.tmpl" %}
             </div>
         </div>
     </main>
