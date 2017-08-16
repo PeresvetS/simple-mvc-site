@@ -1,0 +1,24 @@
+{% for order in orders %}
+<div class="all-good-block col-md-4">
+    <div class="thumbnail card">
+        <div class="goods-main caption">
+            <p class="goods-name">Order #{{ order.id }}</p>
+            <br>
+            <table class="table table-striped th-middle">
+                <tr>
+                    <th>amount:</th>
+                    <td>€{{ order.amount }}</td>
+                </tr>
+                <tr>
+                    <th>datetime create:</th>
+                    <td>{{ order.date_c }}</td>
+                </tr>
+                <tr>
+                    <th>status:</th>
+                    <td>{{ order.status }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+{% endfor %}

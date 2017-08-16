@@ -12,7 +12,7 @@
                         </div>
                     </div>
                 </a>
-                <div class="search-block col-md-5">
+                <div class="search-block col-md-4">
                     <div class="searc-form">
                         <div class="search-menu">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Browse&nbsp;&nbsp;<span class="caret"></span></button>
@@ -32,16 +32,16 @@
                         </div>
                     </div>
                 </div>
-                <div class="my-account-block col-md-4">
+                <div class="my-account-block col-md-5">
                     <div class="my-account-wrap">
-                        {% if isMaster %}
-                        <a href="/master/" class="btn btn-master">Master panel</a> {% endif %} {% if basketParams %}
-                        <div id="basket">
-                            <a class="basket" href="/basket/" title="Count products: {{ basketParams.count }}, Amount: {{ basketParams.amount }}">
-                            </a>
-                        </div>
-                        {% endif %}
                         <div class="btn-my-acc-wrap">
+                            {% if basketParams %}
+                            <div class="basket-wrap">
+                                <a class="basket" href="/basket/" title="Count products: {{ basketParams.count }}, Amount: {{ basketParams.amount }}">
+                                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                                </a>
+                            </div>
+                            {% endif %}
                             <button type="button" class="btn btn-my-acc dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">My Account&nbsp;&nbsp;<span class="caret"></span></button>
                             <ul class="dropdown-menu dropdown-fix">
                                 {% if isLogin %}
@@ -55,6 +55,8 @@
                                 <li><a href="{{ public_url }}auth/register">Register</a></li>
                                 {% endif %}
                             </ul>
+                            {% if isMaster %}
+                            <a href="/master/" class="btn btn-master">Master panel</a> {% endif %}
                         </div>
                     </div>
                 </div>

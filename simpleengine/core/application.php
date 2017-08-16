@@ -88,7 +88,7 @@ class Application {
 
     public function file() : File
     {
-        $this->auth = new File();
+        $this->file = new File();
         return $this->file;
     }
 }

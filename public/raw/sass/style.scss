@@ -43,24 +43,34 @@ main {
     font-size: 18px;
 }
 
+.all-goods {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 $full;
+    flex: 0 0 $full;
+    margin: auto;
+}
+
+.all-good-block {
+    display: inline-block;
+    text-align: center;
+}
+
 .basket {
     @extend .left;
-    background: $backet-ico;
-    height: 29px;
-    margin-left: 5px;
-    margin-top: 40px;
-    width: 32px;
+    color: $pink;
+    height: 26px;
+    font-size: 40px;
     &:hover {
         color: $black-full;
     }
+    &:active {
+        color: $pink;
+    }
 }
 
-.basket-btn {
-    @extend .right;
-    background: $backet-ico;
-    height: 29px;
-    margin-left: 5px;
-    width: 32px;
+.basket-wrap {
+    display: inline-block;
+    margin-right: 20px;
 }
 
 .background-wrapper {
@@ -162,6 +172,7 @@ main {
 .btn-master {
     @extend .btn-reset;
     align-self: flex-end;
+    height: 38px;
     margin-right: 20px;
     &:hover {
         font-weight: initial;
@@ -421,6 +432,11 @@ main {
     }
 }
 
+.goods-main {
+    padding: 1.5rem !important;
+    color: $black;
+}
+
 .h-gallery {
     div {
         position: inherit;
@@ -475,7 +491,7 @@ main {
     margin: auto;
     position: fixed;
     width: $full;
-    z-index: 1;
+    z-index: 999;
 }
 
 .flashers {
@@ -870,6 +886,10 @@ main {
     &:hover {
         opacity: 1.0;
     }
+}
+
+.th-middle th {
+    vertical-align: middle;
 }
 
 .thumbnail>.img-shadow {

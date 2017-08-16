@@ -47,10 +47,13 @@ class AuthModel extends CommonModel
     {   
         $secure = $this->secure;
         $userName = $secure->getSecureQuery($_POST["user_name"], 60);
+        if ($userName == "master") {
+             header("Location: /");
+        }
         $email = $secure->getSecureQuery($_POST["email"], 40);
         $login = $secure->getSecureQuery($_POST["login"], 50);
         $passwordRaw = $secure->getSecureQuery($_POST["password"], 100);
-        $password =$this->app->auth()->hashPassword($passwordRaw);
+        $password = $this->app->auth()->hashPassword($passwordRaw);
 
         $time = date("d.m.Y H:i:s");
         $sql = "INSERT INTO `user` (`id_user`, `user_name`, `user_login`, `user_password`, `user_last_action`, `user_email`)

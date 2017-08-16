@@ -37,9 +37,6 @@ class GoodController extends AbstractController
             $basket = new Basket($_SESSION["user"]["id_user"]);
             $commonParams = $basket->getCommonParams();
         }
-         if ($this->isPostReq()) {
-                  $basket->doAction($_POST['action']);
-        }
         $idGood = $_GET["id"];
         if (is_numeric($idGood)) {
             $idGood = $this->getSecureQuery($idGood, 11);

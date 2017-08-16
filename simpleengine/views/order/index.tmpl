@@ -1,3 +1,50 @@
 {% extends "base.tmpl" %} {% block body %} {% include "layouts/header.tmpl" %}
-<h1>Order</h1>
+<div>
+    <main>
+        <div class="p-4 order-page" id="{{ message }}"></div>
+        <div class="col-md-8 col-md-offset-2">
+            <h3 class="text-center">Order preview:</h3>
+            <br>
+        </div>
+        <form class="form-order-common" accept-charset="UTF-8" role="form" method="post">
+            <table class="table table-striped text-center">
+                <tbody>
+                    <tr>
+                        <th scope="row">Total amount</th>
+                        <td>${{ amount }}</td>
+                    </tr>
+                    <tr>
+                        <th>Your full name</th>
+                        <td class="form-group"><input class="input-control" autocomplete="off" type="text" name="ship_name" placeholder="Svyatopolk Mirskoy"></td>
+                    </tr>
+                    <tr>
+                        <th>Your ship country</th>
+                        <td class="form-group"><input class="input-control" autocomplete="off" type="text" name="ship_country" placeholder="Russia"></td>
+                    </tr>
+                    <tr>
+                        <th>Your ship state</th>
+                        <td class="form-group"><input class="input-control" autocomplete="off" type="text" name="ship_state" placeholder="RU"></td>
+                    </tr>
+                    <tr>
+                        <th>Your ship city</th>
+                        <td class="form-group"><input class="input-control" autocomplete="off" type="text" name="ship_city" placeholder="Moscow"></td>
+                    </tr>
+                    <tr>
+                        <th>Your ship street address</th>
+                        <td class="form-group"><input class="input-control" autocomplete="off" type="text" name="ship_street_address" placeholder="Lenigradky Prospect, 1"></td>
+                    </tr>
+                    <tr>
+                        <th>Your ship zip</th>
+                        <td class="form-group"><input class="input-control" autocomplete="off" type="text" name="ship_zip" placeholder="12345"></td>
+                    </tr>
+                    <tr>
+                        <th>Your phone</th>
+                        <td class="form-group"><input type="text" class="input-control" name="phone_extension" size="3" placeholder="7"><input class="input-control" type="text" name="phone" autocomplete="off" placeholder="965-303-22-22"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <input type="submit" class="btn btn-lg btn-pink" value="submit">
+        </form>
+    </main>
+</div>
 {% include "layouts/footer.tmpl" %} {% endblock %}

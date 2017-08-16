@@ -38,7 +38,7 @@ class Basket extends CommonModel implements DbModelInterface
         if (!empty($result)) {
             foreach ($result as $item) {
                 $this->productsArray[] = [
-                    "id_good" => $item["id_good"],
+                    "id" => $item["id_good"],
                     "price" => $item["good_price"],
                     "name" => $item["good_name"],
                     "type" => $item["good_type"]

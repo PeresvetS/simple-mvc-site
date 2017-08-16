@@ -1,19 +1,19 @@
 {% for good in goods %}
-<tr class="hider {{ good.type }}">
+<tr class="id_{{ good.id }} hider">
     <td>{{ good.name }} </td>
     <td class="singlePrice"> ${{ good.price }}</td>
     <td class="totalPrice"> ${{ good.price }}</td>
     <td>
-        <form class="addItem" accept-charset="UTF-8" role="form" method="post">
-            <input type="hidden" name="id_good" value="{{ good.id_good }}">
+        <form class="addItem changeBasket" accept-charset="UTF-8" role="form" method="post">
+            <input type="hidden" name="id_good" value="{{ good.id }}">
             <input type="hidden" name="action" value="add_good">
             <p style="display:inline-block"><input type="text" class="quantity" onkeyup="copyValueTo(this, 'countOfGood')" name="quantity" size="2" value="1"></p>
             <button type="submit" class="submit btn btn-pink">add</button>
         </form>
     </td>
     <td>
-        <form class="removeItem" accept-charset="UTF-8" role="form" method="post">
-            <input type="hidden" name="id_good" value="{{ good.id_good }}">
+        <form class="removeItem changeBasket" accept-charset="UTF-8" role="form" method="post">
+            <input type="hidden" name="id_good" value="{{ good.id }}">
             <input type="hidden" name="action" value="remove_good">
             <input type="hidden" class="quantity" name="quantity" size="2" id="countOfGood" value="1">
             <button type="submit" class="submit btn btn-reset">remove</span></button></form>

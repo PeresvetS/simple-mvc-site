@@ -17,7 +17,8 @@ class Good extends CommonModel implements DbModelInterface
 
     public function find(int $idGood) : array
     {
-        $sql = "SELECT `good_name` as name,
+        $sql = "SELECT `id_good` as id,
+                    `good_name` as name,
                     `good_price` as price,
                     `good_type` as type,
                     `good_description` as description,

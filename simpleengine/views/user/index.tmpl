@@ -1,1 +1,100 @@
-{% extends "base.tmpl" %} {% block body %} {% include "layouts/header.tmpl" %} {% include "layouts/footer.tmpl" %} {% endblock %}
+{% extends "base.tmpl" %} {% block body %} {% include "layouts/header.tmpl" %}
+<div>
+    <main>
+        <div class="p-5"></div>
+        <div class="row user-profile" id="{{ message }}">
+            <div class="col-md-offset-1 col-md-4">
+                <h3 class="text-center">Change your password</h3>
+                <br>
+                <div class="panel-body  hidden success-password">
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <h4>
+                            Successfully!
+                        </h4>
+                        <p>Your password has been changed.</p>
+                    </div>
+                </div>
+                <div class="panel-body hidden error-password">
+                    <div class="alert alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <h4>
+                            Failed!
+                        </h4>
+                        <p>Please try again</p>
+                    </div>
+                </div>
+                <form class="password-change" accept-charset="UTF-8" role="form" method="post">
+                    <input type="hidden" name="action" value="update_password">
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon"><span class="fa fa-fw fa-unlock"></span></span>
+                                <input type="password" class="form-control" name="password" placeholder="Old password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon"><span class="fa fa-fw fa-unlock-alt"></span></span>
+                                <input type="password" class="form-control pass1" name="pass1" placeholder="New password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon"><span class="fa fa-fw fa-lock"></span></span>
+                                <input type="password" class="form-control pass2" name="pass2" placeholder="New password again">
+                            </div>
+                        </div>
+                        <input class="btn btn-lg btn-pink btn-block" type="submit" value="Change passsword">
+                    </fieldset>
+                </form>
+            </div>
+            <br>
+            <br>
+            <div class="col-md-offset-2 col-md-4 flex-category">
+                <h3 class="text-center">Change email</h3>
+                <div class="panel-body hidden success-email">
+                    <div class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <h4>
+                            Successfully!
+                        </h4>
+                        <p>Your email has been changed.</p>
+                    </div>
+                </div>
+                <div class="panel-body hidden error-email">
+                    <div class="alert alert-warning">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        <h4>
+                            Failed!
+                        </h4>
+                        <p>Please try again</p>
+                    </div>
+                </div>
+                <form class="email-change vertical-center" accept-charset="UTF-8" role="form" method="post">
+                    <input type="hidden" name="action" value="update_email">
+                    <fieldset>
+                        <div class="form-group">
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon"><span class="fa fa-fw fa-envelope"></span></span>
+                                <input type="text" class="form-control" name="email" placeholder="New email">
+                            </div>
+                        </div>
+                        <input class="btn btn-lg btn-pink btn-block" type="submit" value="change email">
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <div>
+            <h3 class="text-center">Status of your orders</h3>
+            <br>
+            <div class="row all-goods">
+                {% include "user/orders.tmpl" %}
+            </div>
+        </div>
+    </main>
+</div>
+{% include "layouts/footer.tmpl" %} {% endblock %}

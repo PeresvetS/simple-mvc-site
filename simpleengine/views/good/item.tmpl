@@ -70,35 +70,40 @@
             <div class="p-1"></div>
             <hr>
             <div class="choice-block-form">
-                <div class="params row">
-                    <div class="col-md-4 text-center">
-                        <label class="control-label" for="first-drop">CHOOSE COLOR</label>
-                        <select class="form-control" id="first-drop">                           
+                <form class="changeBasket" accept-charset="UTF-8" role="form" method="post">
+                    <div class="params row">
+                        <div class="col-md-4 text-center">
+                            <label class="control-label" for="first-drop">CHOOSE COLOR</label>
+                            <select class="form-control" id="first-drop">                           
                             <option selected value="green">Green</option>
                             <option value="red">Red</option>
                             <option value="blue">Blue</option>
                             <option value="yellow">Yellow</option>
                         </select>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <label class="control-label" for="second-drop">CHOOSE SIZE</label>
-                        <select class="form-control" id="second-drop">
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <label class="control-label" for="second-drop">CHOOSE SIZE</label>
+                            <select class="form-control" id="second-drop">
                             <option selected value="S">S</option>
                             <option value="L">L</option>
                             <option value="M">M</option>
                             <option value="XL">XL</option>
                         </select>
+                        </div>
+                        <div class="col-md-4 text-center">
+                            <input type="hidden" name="action" value="add_good">
+                            <input type="hidden" name="id_good" value="{{ good.id }}">
+
+                            <label class="control-label" for="third-drop">QUANTITY</label>
+                            <input type="number" class="form-control" id="third-drop" name="quantity" step="1" placeholder="1">
+                        </div>
                     </div>
-                    <div class="col-md-4 text-center">
-                        <label class="control-label" for="third-drop">QUANTITY</label>
-                        <input type="number" class="form-control" id="third-drop" step="1" placeholder="1">
-                    </div>
-                </div>
-                <div class="btn-item-block">
-                    <button class="btn btn-choice-block btn-pink">
+                    <div class="btn-item-block">
+                        <button type="submit" class="btn btn-choice-block btn-pink">
                                 Add to Cart
                             </button>
-                </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

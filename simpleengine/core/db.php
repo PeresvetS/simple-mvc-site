@@ -60,8 +60,14 @@ class Db
     public function executeQuery(string $sql) : bool
     {
         $statement = $this->pdo->prepare($sql);
-        return $statement->execute();
-
+        try { 
+            $result = $statement->execute();
+        }
+        catch (simpleengine\core\exception\DbException $e){
+            echo "Inner DB exception ".$e->getCode()." ".$e->getMessage();
+        }
+        return $result;
     }
+
 
 }

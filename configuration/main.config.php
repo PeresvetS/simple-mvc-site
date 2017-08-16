@@ -10,7 +10,7 @@ $configuration["DIR"]["VIEWS"] = $_SERVER["DOCUMENT_ROOT"]."/../simpleengine/vie
 
 $configuration["DB"]["DB_HOST"] = "localhost";
 $configuration["DB"]["DB_USER"] = "root"; 
-$configuration["DB"]["DB_PASS"] = "WU4qJkMfdJ5ABg3s"; 
+$configuration["DB"]["DB_PASS"] = "***"; 
 $configuration["DB"]["DB_NAME"] = "mvc-site"; 
 $configuration["DB"]["DB_CHARSET"] = "UTF8";
 

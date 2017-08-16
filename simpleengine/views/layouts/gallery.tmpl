@@ -9,7 +9,7 @@
                 <div class="caption">
                     <p>{{ good.name }}</p>
                     <p>${{ good.price }}</p>
-                    <form class="addToBasket {{ canBuy }}" accept-charset="UTF-8" role="form" method="post">
+                    <form class="changeBasket {{ canBuy }}" accept-charset="UTF-8" role="form" method="post">
                         <input type="hidden" name="quantity" value="1">
                         <input type="hidden" name="action" value="add_good">
                         <input type="hidden" name="id_good" value="{{ good.id }}">

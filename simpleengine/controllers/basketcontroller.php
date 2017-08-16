@@ -8,8 +8,8 @@ class BasketController extends AbstractController
 {
     public function actionIndex()
     {   
-        $basket = new Basket($_SESSION["user"]["id_user"]);
         if ($this->isLogin()) {
+            $basket = new Basket($_SESSION["user"]["id_user"]);
             if ($this->isPostReq()) {
                   $basket->doAction($_POST['action']);
             }

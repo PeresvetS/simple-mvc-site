@@ -10,12 +10,14 @@ class MasterController extends AbstractController
     {   
         if ($this->isMaster()) { 
 
-            $model = new Master();
-            echo $this->render("default/index", [
+            $master = new Master();
+            $goods = $master->findAllGoods();
+            echo $this->render("master/index", [
                 "isLogin" => $this->isLogin(),
                 "isMaster" => $this->isMaster(),
-                "public_url" => "",
-                "basketParams" => null
+                "public_url" => "../",
+                "basketParams" => null,
+                "goods" => $goods
             ]);
         }
         else {
@@ -28,7 +30,6 @@ class MasterController extends AbstractController
         if ($this->isPostReq()) {
             $master = new Master();
             $master->doAction($_POST["action"]);
-            // $order->sendInfoMail();
         }
         else {
             header("Location: /");

@@ -9,33 +9,28 @@ class File
 
 
     
-    /**
-     * uploadFile
-     * @return mixed 
-     */
-    public function uploadFile()
+    public function uploadFile() : string
     {
-        if (
-        !isset($_FILES['img']['error']) ||
-        is_array($_FILES['img']['error'])
-        ) {
-        throw new RuntimeException('Invalid parameters.');
-        }
-
+        $imgPath = '';
         if (is_uploaded_file($_FILES['img']['tmp_name'])) {
-            $imgDir = $_SERVER['DOCUMENT_ROOT'] . '/public/img/' . basename($_FILES['img']['name']);
+            $imgPath = 'img/' . basename($_FILES['img']['name']);
+            $impPathFull = $_SERVER['DOCUMENT_ROOT'] . "/$imgPath";
             
-            if (move_uploaded_file($_FILES['img']['tmp_name'], $imgDir)) {
-                return $imgDir;
+            if (move_uploaded_file($_FILES['img']['tmp_name'], $impPathFull)) {
+                return $imgPath;
             } 
         }
-        return false;
+        return $imgPath;
     }
     
 
     
     public function deleteFile(string $localPath) : bool
     {
-        return unlink($localPath);
+        $fullPath = $_SERVER['DOCUMENT_ROOT'] . "/$localPath";
+        if(file_exists($fullPath)) {
+                return unlink($fullPath);
+        }
+        return false;
     }
 }
